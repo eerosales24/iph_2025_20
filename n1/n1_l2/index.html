@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/iph.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/spyder.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### <i class="fas fa-award"></i> IP Honores
+
+ ####  *Laboratorio 2 de Nivel 1 - N1-L2*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Objetivos
+
+
+- Comprender los siguientes conceptos en Python:
+	- Funciones
+		- Funciones definidas por el usuario
+	- Composición de funciones
+<br>
+<br>
+
+- Aprender a enviar un entregable del curso
+	- Vía Bloque Neón
+
+	<br>
+
+- Aprender a usar [senecode](https://senecode.virtual.uniandes.edu.co/)
+	- Para hacer la **Tarea 1 de N1**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Siga paso a paso las siguientes instrucciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Trabajo individual (1/2)
+
+- Este laboratorio debe realizarse de forma
+	- **Completamente individual**<!-- .element: class="fragment highlight-red" -->
+
+<br>
+
+- El tiempo para terminar el laboratorio es corto
+	- Por favor:
+		- Evite las distracciones
+		- Guarde **silencio**<!-- .element: class="fragment highlight-blue" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Trabajo individual (2/2)
+
+
+- Este laboratorio tiene **dos entregables**:<!-- .element: class="fragment highlight-red" -->
+
+<br>
+
+1. Se hará un envío de lo hecho en esta sesión
+	- Vía Bloque Neón
+		- No evaluable
+
+<br>
+
+
+2.  La **Tarea 1 de N1**<!-- .element: class="fragment highlight-blue" -->
+	- Vía senecode
+		- **Evaluable** <!-- .element: class="fragment highlight-red" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Preguntas
+
+- En caso de dudas, por favor:
+
+<br> 
+
+1. Formule su pregunta de forma **muy clara y concisa**
+
+<br>
+
+2. Luego (**y solo luego de esto**)
+	- Levante la mano
+
+<br>
+
+<i class="fas fa-question-circle fa-1x fa-spin fa-1x"></i> _Al plantearse correctamente la pregunta, la respuesta a veces se revela sola_
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Fundamentación teórica (1/2)
+
+- Recuerde los conceptos explicados a continuación...
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Función (1/2) 🌀
+
+<img src="iph/n1/img/funcion.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Función (2/2) 🌀
+ 
+- Código fuente reutilizable
+	- Diseñado para una tarea específica
+	
+	<br>
+
+- Puede tomar datos de entrada
+- Produce un resultado o efecto
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀  Función integrada (built-in function) 🌀 
+
+- Predefinida en Python
+- Hace parte de la _librería de Python_
+    - La cual contiene funciones de uso común
+    - Ej: `print()`, `id()`, `type()`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀  Expresión 🌀 
+-   Sintaxis evaluable que produce un valor
+-   Se compone de 
+	- Un elemento único
+	- Ó una combinación de 
+		- Valores
+		- Operadores, 
+		- Variables,
+		- Invocaciones a funciones, etc.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Funciones y expresiones 🌀
+
+- Cuando las funciones retornan un valor
+	- Pueden ser parte de expresiones
+- Ej:
+
+	
+
+```Python
+100 + min(50, 100)  # → 150
+
+abs(-100) + max(50, 100)  # → 200
+
+round(4.5012, 2) + round(4.0023, 2)  # → 8.5
+
+pow(2, 2) - pow(1, 2)  # → 3
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Fundamentación teórica (2/2)
+
+- Comprenda muy bien 
+	- Los **NUEVOS** conceptos explicados a continuación
+
+<br>
+
+- Tómese su tiempo para leer cuidadosamente y
+	- Completar los quizzes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### I. Composición de funciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Composición de funciones
+
+ - Ejecutar múltiples funciones en secuencia
+
+<br>
+
+- **Salida de una función → Entrada de otra**
+
+  - Todo en una sola línea
+
+	<br>
+
+- Los tipos deben ser compatibles entre funciones
+
+- El orden de la composición es clave
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Composición de funciones - Ejemplos (1/2)
+
+- Ejemplo de composición de **dos** funciones:
+```Python
+abs(int(-15.6))  # → 15
+```
+
+<br>
+
+- **Explicación**:
+	1. **Primero se invoca a `int()` con el argumento `-15.6`**  <!-- .element: class="fragment" data-fragment-index="1" -->
+		- **Retorna `-15`**  <!-- .element: class="fragment" data-fragment-index="2" -->
+	2. **Luego, se invoca  a `abs()` con el argumento `-15`**  <!-- .element: class="fragment" data-fragment-index="3" -->
+		- **Retorna `15`**  <!-- .element: class="fragment" data-fragment-index="4" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz I
+
+
+- ¿Cuál es el resultado de ejecutar la siguiente expresión?
+```Python
+max(abs(-10), pow(3, 2))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz I - Solución
+
+
+```python
+```Python
+# Máximo entre abs(-10) y pow(3, 2): 
+max(abs(-10), pow(3, 2))  # → 10
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz II
+
+
+- ¿Cuál es el resultado de ejecutar la siguiente expresión?
+
+```python
+min(pow(2, 3), abs(-9))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz II - Solución
+
+```python
+# Mínimo entre 2**3 y abs(-9):
+min(pow(2, 3), abs(-9))  # → 8
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz III
+
+
+- ¿Cuál es el resultado de ejecutar la siguiente expresión?
+```python
+type(str(abs(-50) + 25))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz III - Solución
+
+```python
+type(str(abs(-50) + 25))  # → str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz IV
+
+
+- ¿Cuál es el resultado de ejecutar la siguiente expresión?
+
+
+```python
+round(float(9 / 2), 2)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz IV - Solución
+
+
+```python
+# Conversión a float y redondeo a dos cifras:
+round(float(9 / 2), 2)  # → 4.5
+```
+
+- **Nota:** A pesar de redondear a dos cifras
+	- El cero adicional a la derecha
+		- No es considerado por Python
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### II.  Stack con composición de funciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Para este ejemplo:
+```python
+# Tipo de str(75):
+type(str(abs(-50) + 25))  # → str
+```
+
+Intente imaginar cómo se vería el Stack (**simplificado**):
+
+```plaintext
+APILA abs(-50)
+DESAPILA abs() -> 50
+APILA str(50 + 25)
+DESAPILA  str() -> '75'
+APILA type('75')
+DESAPILA  type() -> str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de composición y Stack simplificado (1/3)
+
+```python
+# Tipo de str(75):
+type(str(abs(-50) + 25))  # → str
+```
+
+- Primero:
+
+```python
+abs(-50)
+```
+
+<img src="Screenshot 2025-08-14 at 12.04.50 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de composición y Stack simplificado (2/3)
+
+```python
+# Tipo de str(75):
+type(str(abs(-50) + 25))  # → str
+```
+
+- Segundo:
+
+```python
+str(50 + 25)
+```
+
+
+<img src="Screenshot 2025-08-14 at 12.08.58 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de composición y Stack simplificado (3/3)
+
+```python
+# Tipo de str(75):
+type(str(abs(-50) + 25))  # → str
+```
+
+- Tercero:
+
+```python
+type('75')
+```
+
+
+<img src="Screenshot 2025-08-14 at 12.10.17 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### III.   Función definida por el usuario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de funciones en Python
+
+<br>
+
+- 🌀 Función integrada (built-in function) 🌀
+
+<br>
+
+- **Función definida por el usuario (user-defined function)**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tómese su tiempo para comprender bien cada concepto...
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Sintaxis básica de una función definida por el usuario
+
+```Python
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `def`
+
+- Introduce la definición (o declaración) de una función
+	- La palabra clave `def` no hace parte de la signatura
+	  
+```Python[1]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Signatura y cuerpo de la función
+
+- Una función puede dividirse en dos partes:
+	- Signatura o encabezado
+	- Cuerpo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Estudiemos la signatura de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### nombre_funcion
+
+- Aquí un ejemplo del nombre dado a una función
+
+```Python[2]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### nombre_funcion - Ejemplo
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+```
+
+- Aquí, `suma` es el nombre de la función ejemplo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetro
+
+- Nombre de un **dato de entrada** de la función, en su definición
+
+```Python[3]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Lista de parámetros
+
+- Una función puede tener **cero, uno o varios** parámetros
+	- Si hay varios se separan por **comas**
+	- La lista se encierra **entre paréntesis**
+
+```Python[3,4]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo del parámetro
+
+- Cada parámetro tiene un **tipo de dato**
+```Python
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+```
+
+	<br>
+
+- Los dos puntos anteceden el **tipo del parámetro**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetros - Ejemplo
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+```
+
+<br>
+
+- Aquí, `primer_operando` y `segundo_operando`
+	- Son los parámetros de la función ejemplo:  `suma`
+- Ambos son del tipo `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo de retorno
+
+- **Tipo de dato** del **valor de retorno** de la función
+
+```Python[5]
+def 
+nombre_funcion
+(paramentro_1: tipo_parametro_1 ... 
+ paramentro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo de retorno - Ejemplo
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+```
+
+<br>
+
+
+- El tipo de retorno de la función `suma`
+	- Es del tipo `int`
+		- La suma aritmética de dos `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Estudiemos el cuerpo de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Cuerpo de la función
+
+- Contiene las instrucciones que la función ejecuta
+
+```Python[6]
+def 
+nombre_funcion
+(paramentro_1: tipo_parametro_1 ... 
+ paramentro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+
+- El cuerpo de la función 
+	- Es un **bloque de código**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Bloque de código
+
+- Grupo de instrucciones relacionadas
+	- Marcado por una **indentación** idéntica
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Indentación (1/2)
+
+- Iniciar una línea de código con espacios en blanco
+- Por convención
+	- Se usa **4 espacios** en blanco
+	
+<img src="iph/n1/img/indentacion.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Indentación (2/2)
+
+- En IP Honores, siempre se usa
+	-  **4 espacios** en blanco
+	
+<img src="iph/n1/img/indentacion.png" alt="" style="object-fit: scale-down">
+
+
+-  ❌ Usar tab
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno de una función
+
+- Retorno:
+	- La función puede retornar un resultado
+		- En Python, esto se logra con la instrucción:
+			- `return`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La función de ejemplo: `suma()`
+		
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+```
+
+<br>
+
+- El algoritmo de esta función es muy sencillo
+	- Solo se suma dos operandos
+		- Y se retorna el resultado
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Cómo se invocaría a la función `suma()`?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Invocación 🌀
+
+- Nombre dado al proceso de llamar una función para ejecutarla
+- Ej:
+```Python
+type('argumento')  # → str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Argumento 🌀
+
+- Nombre de un dato de entrada de la función, al invocarla
+- Una función puede esperar cero, uno o varios argumentos
+- Ej:
+	- La función `type()` espera un solo argumento
+	- En este caso, se invoca a esa función
+		- Usando un argumento del tipo string
+```Python
+type('este_es_un_argumento')  # → str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Argumento y parámetros
+
+- El número de argumentos **debe corresponderse**
+	- Con el número de parámetros
+
+<br>
+
+- Aquí se llama a la función `suma()`
+	- Usando los argumentos: `2` y `2`
+
+<br>
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+    
+suma(2, 2)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (1/15)
+
+
+- Aquí se llama a la función `suma()`
+	- Usando otros argumentos:
+
+	<br>
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (2/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Cuáles son los argumentos enviados a la función `suma()`?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`3` 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`4`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (3/15)
+
+```python[1,4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Qué valor toma `primer_operando`?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`3` 
+-  ¿Qué valor toma `segundo_operando` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`4`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-auto-animate="true" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (4/15)
+
+
+```python[2]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+
+<div class="mermaid">
+flowchart TD
+subgraph id["\n-"]
+    A["3 + 4"] 
+    A --> 7
+end
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (5/15)
+
+```python[2]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Qué retorna la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`7` 
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->A `7` se le llama:  
+			- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**Valor de retorno**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (6/15)
+
+```python[1,2]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Cuál es el tipo de retorno?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (7/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Cuál es el valor asignado a `resultado`, una vez se ha ejecutado la función `suma()`?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" --> `7`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (8/15)
+
+```python[5]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Cuál es el argumento usado para invocar a `print()`?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`7`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (9/15)
+
+```python[5]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- ¿Qué muestra `print()` en pantalla? 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`7`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (10/15)
+
+```python[4,5]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuántas funciones fueron invocadas en total?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos: 
+		- `suma()`
+		- `print()`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (11/15)
+
+```python[1]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuántos parámetros espera la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos:
+		- `primer_operando`
+		- `segundo_operando`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (12/15)
+
+```python[1]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿De que tipo son los parámetros que espera la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ambos son `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (13/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuántos argumentos se usaron para invocar a la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (14/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿De que tipo son los argumentos usados al invocar la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ambos son `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (15/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuáles argumentos se usaron para invocar a la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->3 y
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->4
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Orden de argumentos (1/2)
+
+- El orden de los argumentos en la invocación **importa**:
+
+```python
+def resta(primer_operando: int, segundo_oeprando: int) -> int:
+    # Al invocarse la función así: resta(10, 5)
+      # `primer_operando` será igual a 10
+      # `segundo_oeprando` será igual a 5
+    return primer_operando - segundo_oeprando  # Retorna 5
+```
+
+```python
+resta(10, 5)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz V
+
+```python
+def resta(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando - segundo_operando
+```
+
+¿Cuál es el resultado de la siguiente instrucción?
+```python
+resta(5, 10)
+```
++ -5 <!-- .element: class="fragment" data-fragment-index="1" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Orden de argumentos (2/2)
+
+
+```python
+def resta(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando - segundo_operando
+```
+
+<br>
+
+- Estas dos invocaciones son **distintas**:
+
+```python
+resta(10, 5)  # → 5
+
+resta(5, 10)  # → -5
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VI
+
+- Esta función 
+	- Recibe como datos de entrada a **dos flotantes**
+	- Produce como salida (resultado) un flotante
+	
+```Python
+def suma(num1: float, num2: float) -> float:
+    return num1 + num2
+```
+
+<br>
+
+- ¿Serviría esta función si se le pasan argumentos enteros?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Sí
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Porque un `int` "cabe" adentro de un `float`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VII
+
+- Esta función 
+	- Recibe como datos de entrada a dos flotantes
+	- Produce como salida (resultado) **un flotante**
+	
+```Python
+def suma(num1: float, num2: float) -> float:
+    return num1 + num2
+```
+
+<br>
+
+- Si le se pasara como argumento dos enteros
+	- ¿De que tipo sería el valor de retorno de la función `suma()`?
+		- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`int`
+			- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Porque la suma de dos enteros es un `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VIII
+
+```python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+```
+- ¿Para qué  sirve la palabra clave `def`? 
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Para declarar una función
+	
+- ¿Cuál es el nombre de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`suma`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz IX
+
+```python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+```
+	
+- ¿Cuántos parámetros tiene la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->2
+	
+- ¿De qué tipo son los parámetros tiene la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Ambos son `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz X
+
+```python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+```
+- ¿Cuántas líneas tiene el cuerpo de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Una
+	
+- ¿Qué hace el cuerpo de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Suma aritméticamente a: 
+		- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`primer_operando` y  `segundo_operando`
+			- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Y **retorna** el resultado
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La instrucción `return` (1/2)
+
+- Palabra clave que  finaliza una función y retorna
+- Permite que una función 
+	- Retorne un resultado al código que la invocó
+- Sintaxis:
+```
+return expresion
+```
+- `expresion` (opcional): Una expresión que evalúe a un valor
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La instrucción `return` (2/2)
+
+- Si no se usa una expresión al frente de `return`
+```
+return
+```
+	- Se retorna por defecto `None`
+
+<br>
+
+- Si la función no define la instrucción `return`
+```python
+def imprimir_hola() -> None:
+    print("Hola")
+```
+	- Se retorna por defecto `None`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `None`
+    
+- Palabra clave que representa la ausencia de valor o **valor nulo**
+- En Python, `None` es una constante
+	- **Constante (repaso)**: 
+		- Tipo de variable cuyo valor no está destinado a cambiar 
+			- Después de ser declarado
+    
+- `None` es el valor retornado implícitamente 
+	- Si la función no retorna explícitamente otro valor
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno explícito vs.  retorno implícito (1/4)
+
+- En Python una función
+	- **Retorna  `None` por defecto**
+		- Salvo que explícitamente se indique lo contrario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno explícito vs.  retorno implícito (3/4)
+
+- **Retorno explícito**:
+	- Cuando se usa  `return` 
+
+	<br>
+
+ - Por ejemplo, aquí se retorna explícitamente un `float`:
+ 
+```python
+def multiplicacion(primer_operando: float, segundo_operando: float) -> float:
+    return primer_operando * segundo_operando
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno explícito vs.  retorno implícito (3/4)
+
+-  **Retorno implícito**:
+	- Cuando **no se usa un `return`**
+		- Por defecto, Python retorna  **`None`**
+
+	<br>
+
+ - Por ejemplo, aquí se retorna `None`:
+```python
+def print_nombre(nombre: str) -> None:
+    print(nombre)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno explícito vs.  retorno implícito (4/4)
+
+```python
+def ejemplo() -> None:
+    return
+```
+
+<br>
+
+-  **Retorno explícito**:
+	- Porque **se usa un `return`**
+		- Por defecto, Python retorna  **`None`**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XI
+
+```python
+def resta(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando - segundo_operando
+```
+
+- ¿La función tiene un retorno explícito o implícito?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Explícito
+
+- ¿Qué retorna la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->La resta aritmética  de: 
+		- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`primer_operando` y  `segundo_operando`
+	
+- ¿Cuál es el tipo de retorno de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->`int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XII
+
+```python
+def print_nombre(nombre:str) -> None:
+    print(nombre)
+```
+
+- ¿La función tiene un retorno explícito o implícito?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Implícito
+
+- ¿Qué retorna la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`None`
+	
+- ¿Cuál es el tipo de retorno de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`None`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XIII
+
+```python
+def no_hace_nada() -> None:
+    return
+```
+
+- ¿La función tiene un retorno explícito o implícito?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Explícito
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Porque se usa `return` 
+
+- ¿Qué retorna la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->`None`
+		
+	
+- ¿Cuál es el tipo de retorno de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->`None`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XIV
+
+```python
+def div_entera(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando // segundo_operando
+```
+
+¿Cuál es el resultado de la siguiente instrucción?
+```python
+div_entera(9, 2)
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->4
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendamos más a fondo la ejecución de una función definida por el usuario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (1/7)
+
+- ¿Cuál es el propósito de la siguiente función?
+
+```python
+def area_rectangulo(ancho: float, alto: float) -> float:
+    return ancho * alto
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Calcula el área de un rectángulo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (2/7)
+
+- Al invocar correctamente a una función
+	- Esta se ejecutará
+		- Los argumentos serán el valor de los parámetros
+			- El cuerpo de la función se ejecutará
+
+```python
+def area_rectangulo(ancho: float, alto: float) -> float:
+
+    # Al invocarse la función:
+    
+      # `ancho` será igual a 5.5
+      
+      # `alto` será igual a 2.0
+      
+    return ancho * alto  # Retorna 11.0
+```
+
+```python
+area_rectangulo(5.5, 2.0)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (3/7)
+
+- Conceptualmente, invocar se puede ver así:
+<img src="iph/n1/img/flujo_1.png" alt="" style="width: 80%; height: 24%; object-fit: fill">
+
+
+- `area_rectangulo(5.5, 2.0)` invoca a la función `area_rectangulo()`
+	- Los argumentos usados son `5.5`, `2.0`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (4/7)
+
+<img src="iph/n1/img/flujo_1.png" alt="" style="width: 80%; height: 24%; object-fit: fill">
+
+
+- Se dice que el *control de flujo* del programa
+	- _Salta_ a la definición de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (5/7)
+
+- ¿Cuál será el valor asignado a `resultado` al ejecutar el siguiente código?
+
+```python
+def area_rectangulo(ancho: float, alto: float) -> float:
+    return ancho * alto
+```
+```python
+resultado = area_rectangulo(5.5, 2.0)
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`resultado` será igual a `11.0`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (6/7)
+
+- Conceptualmente, retornar se puede ver así:
+
+<img src="iph/n1/img/flujo_2.png" alt="" style="width: 80%; height: 24%; object-fit: fill">
+
+
+
+- El cuerpo de la función  se ejecuta:
+	- La función `area_rectangulo()` retorna
+		- El valor de retorno (`11.0`) se asigna a `resultado`
+			- `resultado` será igual a `11.0`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejecución de la función (7/7)
+
+
+<img src="iph/n1/img/flujo_2.png" alt="" style="width: 80%; height: 24%; object-fit: fill">
+
+
+
+- Se dice que el *control de flujo* del programa
+	- Se _retorna_ al punto de invocación de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendamos más a fondo la documentación de una función definida por el usuario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Documentación de funciones (1/2)
+
+- Explican el propósito de la función [(PEP 257)](https://peps.python.org/pep-0257/)
+    
+- La documentación se encierra en comillas triples 
+```python
+"""
+"""
+```
+
+- Por esa razón a la documentación en Python
+	- También se le conoce como **`docstring`**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Documentación de funciones (2/2)
+
+- Típicamente incluye:
+	- **Descripción/propósito**
+	- **Parámetros** (`Args`):
+		- Nombre, tipo, descripción, valor por defecto (si lo hay)
+	- **Valor de retorno** (`Returns`):
+		- Nombre (si se nombra), tipo y descripción
+	- **Casos de prueba**:
+		- Estudiados más adelante en el curso...
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de documentación - Función `suma()`
+
+```python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    """
+    Calcula la suma de dos números enteros.
+
+    Args:
+        primer_operando (int): El primer número entero a sumar.
+        segundo_operando (int): El segundo número entero a sumar.
+
+    Returns:
+        int: El resultado de sumar los números enteros.
+    """
+    return primer_operando + segundo_operando
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XV
+
+- ¿Cuál es el propósito de la función?
+
+```python
+    """
+    Calcula el volumen de un cilindro.
+
+    Args:
+        radio_base (float): El radio de la base del cilindro.
+        altura (float): La altura del cilindro.
+
+    Returns:
+        float: El volumen del cilindro.
+    """
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Calcula el volumen de un cilindro
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XvI
+
+- ¿Cuáles serán los parámetros de la función y su tipo?
+
+```python
+    """
+    Calcula el volumen de un cilindro.
+
+    Args:
+        radio_base (float): El radio de la base del cilindro.
+        altura (float): La altura del cilindro.
+
+    Returns:
+        float: El volumen del cilindro.
+    """
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`radio_base`, `float`
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`altura`, `float`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz XVII
+
+- ¿Qué se espera retorne la función y cuál es el tipo de retorno de la función?
+
+```python
+    """
+    Calcula el volumen de un cilindro.
+
+    Args:
+        radio_base (float): El radio de la base del cilindro.
+        altura (float): La altura del cilindro.
+
+    Returns:
+        float: El volumen del cilindro.
+    """
+```
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Retornará el volumen del cilindro
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Del tipo `float`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Resumen de funciones
+
+<img src="iph/n1/img/resumen_funciones.png" alt="" style="width: 66%; height: 40%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Fin de la parte teórica
+
+- No proceda si un concepto no es claro
+- Pregunte en caso de dudas
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad I
+
+- **Objetivo:**
+	- Aprender a ejecutar un programa Python en Spyder
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (1/12)
+
+- Defina su directorio de trabajo (working directory)
+	- Para ello, cree una carpeta cuyo nombre **no tenga espacios**
+		- Copie la ruta a esa carpeta 
+			- En la parte superior de Spyder (ver cuadro rojo)
+				- Presione *Enter*
+
+<img src="iph/n1/img/spyder_5.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (2/12)
+
+- Cambie la vista al **Explorador de archivos (Files)**
+	- Para ello, haga clic en **Explorador de archivos (Files)** (ver cuadro rojo)
+
+<img src="iph/n1/img/spyder_6.png" alt="" style="width: 40%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (3/12)
+
+- Clic derecho en el área blanca (ver cuadro rojo)
+
+<img src="iph/n1/img/spyder_6_1.png" alt="" style="width: 60%; height: 50%; object-fit: fill">
+
+
+- Seleccione **una sola** opción:
+	1. Al hacer clic derecho, [se desplegó un menú](https://eerosales24.github.io/iph_2025_20/n1/n1_l2/#/99)
+	
+	2. Al hacer clic derecho, [NO se desplegó nada](https://eerosales24.github.io/iph_2025_20/n1/n1_l2/#/100)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (4/12)
+
+- Seleccione: **Nuevo – Archivo (New – File)** (ver cuadro rojo)
+
+<img src="iph/n1/img/spyder_7.png" alt="" style="width: 50%; height: 50%; object-fit: fill">
+
+
+- [**CLIC para continuar en ORDEN**](https://eerosales24.github.io/iph_2025_20/n1/n1_l2/#/104)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (5/12)
+
+- Si hacer clic derecho no funcionó, entonces vaya a:
+	- **Archivo (File)**
+		- **Nuevo Archivo (New File)**
+			- Esto creará un nuevo archivo llamado `untiled.py` (o similares)
+
+<img src="iph/n1/img/spyder_11.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (6/12)
+
+- Vaya a **Archivo (File)**
+	- **Guardar como (Save as)**
+		- Esto abrirá una ventana que solicita en donde guardar el archivo
+		
+<img src="iph/n1/img/spyder_12.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (7/12)
+
+- Digite el siguiente nombre:
+	- **`programa_suma.py`**
+
+- Elija el directorio en donde guardar
+	-  **Debe ser el *directorio de trabajo* que definió antes**
+- Luego, elija la opción:
+	- **Guardar (Save)**
+
+<img src="iph/n1/img/spyder_8.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (8/12)
+
+- Verifique que el archivo esté abierto
+	- En el editor de Spyder
+
+<img src="iph/n1/img/spyder_9.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (9/12)
+
+- Copie y pegue el siguiente código en el **editor de Spyder**:
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    """
+    Calcula la suma de dos números enteros.
+
+    Args:
+        primer_operando (int): El primer número entero a sumar.
+        segundo_operando (int): El segundo número entero a sumar.
+
+    Returns:
+        int: El resultado de sumar los números enteros.
+    """
+    return primer_operando + segundo_operando
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (10/12)
+
+- Ejecute el intérprete (terminal) de Spyder
+	- Para ello, clic en el botón de ► "play" (ver cuadro rojo)
+
+<img src="iph/n1/img/spyder_10.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (11/12)
+
+- Ahora, ejecute la función `suma()`
+	- Para ello, vaya al intérprete (terminal) y ejecute a la función suma
+		- Por ejemplo, al ingresar este llamado:
+		
+```Python
+suma(0,0)
+```
+
+- El resultado debería verse similar a este:
+  
+<img src="iph/n1/img/suma_1.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (12/12)
+
+- Invoque la función `suma()`
+	- Usando otros valores
+		- Ej:
+		
+```Python
+suma(2, 2)
+suma(-2, -10)
+suma(-2, 5)
+```
+
+- El resultado completo debería verse similar a este:
+
+<img src="iph/n1/img/suma_2.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad II
+
+- **Objetivo:**
+	- Crear un programa nuevo con una función definida por el usuario
+	- Aprender a editar y ejecutar un programa Python en Spyder
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad II (1/2)
+
+1. Cree un nuevo archivo llamado:
+	- **`programa_imc.py`**
+2.  En ese nuevo archivo
+	-  Implemente la función: **`calcular_imc`**
+		- Aquí se provee la documentación de la misma:
+		
+<br>
+
+```python
+def calcular_imc(peso: float, altura: float) -> float:
+    """
+    Calcula el índice de Masa Corporal (IMC) a partir del peso y
+    la altura de una persona.
+
+    Args:
+        peso (float): Peso de la persona en kilogramos (kg) (valor mayor a 0).
+        altura (float): Altura de la persona en metros (m) (valor mayor a 0).
+
+    Returns:
+        float: El IMC calculado, redondeado a dos decimales (valor mayor a 0).	
+    """
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+##  Actividad II (2/2)
+
+3. Así se calcula el IMC:
+
+$
+IMC = \frac{peso_{kg}}{(estatura_{m})^2}
+$
+
+<br>
+
+4. Para probar su función
+	- Puede uitlizar estos datos de prueba:
+
+```plaintext
+calcular_imc(70, 1.75)   # → 22.86
+
+calcular_imc(50, 1.60)   # → 19.53
+
+calcular_imc(90, 1.80)   # → 27.78
+
+calcular_imc(120, 2.00)  # → 30.0
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad III
+
+- **Objetivo:**
+	- Aprender como hacer el envío de un **entregable** del curso
+		- Mediante [Bloque Neón](https://bloqueneon.uniandes.edu.co/d2l/home)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad III (1/5)
+
+1. Comprima en un archivo `.zip`
+	- Los 2 archivos (`.py`) producidos en este laboratorio:
+		- `programa_suma.py`
+		- `programa_imc.py`
+
+<br>
+
+2. Cambie el nombre del archivo `.zip` siguiendo el formato:
+	- **N2-L2-login.zip**
+		- Donde *login* es su nombre de usuario de Uniandes
+			- Ej: `N2-L2-pe.perez123.zip`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad III (2/5)
+
+- Inicie sesión en [Bloque Neón](https://bloqueneon.uniandes.edu.co/)
+
+- Vaya a **"Actividades"**
+	- **"N1-L2"**
+		- Siga los pasos mostrados a continuación:
+
+<img src="iph/n1/img/envio.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad III (3/5)
+
+- Compruebe el envío correcto de su laboratorio
+	- En Bloque Neón
+		- Vaya a **"Actividades"**
+	- Debería aparecer su envío
+		- Haga clic en el envío (ver cuadro rojo)
+
+<img src="iph/n1/img/enviado.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad III (4/5)
+
+- Compruebe el envío correcto de su laboratorio
+	- Descargue el archivo `.zip` que envió
+	- **Verifique que el contenido en el `.zip` enviado**
+		- Es aquel **que usted deseaba enviar**
+
+<img src="iph/n1/img/zip_enviado.png" alt="" style="object-fit: scale-down">
+
+<!-- .element: style="width: 40%; height: 50%" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad III (5/5)
+
+- Si el contenido del archivo `.zip` 
+	- No es correcto o no hay ningún envío
+		- Repita el proceso de envío **muy cuidadosamente**
+
+<br>
+
+- **Importante:**
+	- El proceso de envío de un proyecto **será muy similar**
+		- Por ese motivo
+			- Debe aprender a hacerlo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad IV
+
+- **Objetivo:**
+	- Aprender a usar senecode
+	- Aprender cómo hacer la **Tarea  1 de N1**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (1/15)
+
+- Inicie sesión en senecode:
+	- Vaya a [senecode](https://senecode.virtual.uniandes.edu.co/)
+	- Inicie sesión con su usuario y clave Uniandes
+
+<img src="iph/n1/img/senecode_login.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (2/15)
+
+- Ingrese a la primera tarea
+	- Busque y haga clic en: '**Tarea N1 - Tarea 1**':
+
+<img src="iph/n1/img/tarea1.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (3/15)
+
+- La tarea contiene **10** ejercicios:
+	- `Altura de una persona` (1 pt.)
+	- `Área de una habitación` (1 pt.)
+	- `Tiempo de descarga` (1 pt.)
+	- `Unidades de tiempo a segundos` (1 pt.)
+	- `Tarifa de un taxi` (1 pt.)
+	- `Suma de los primeros n enteros positivos` (1 pt.)
+	- `Índice de masa corporal` (1 pt.)
+	
+	<br>
+
+	- Requieren de temas a ver la próxima semana:
+		- `Eficiencia de combustible` (2 pt.)
+		- `Caída libre` (2 pt.)
+		- `Volumen de un cilindro` (2 pt.)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (4/15)
+
+- Tomemos como ejemplo:
+	- **Altura de una persona**
+- Haga clic sobre este ejercicio
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (5/15)
+
+- Se desplegará la descripción completa del ejercicio:
+
+<img src="iph/n1/img/alt_persona_1.png" alt="" style="width: 65%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (6/15)
+
+  - Lea **muy cuidadosamente** la descripción del problema
+  - Lea **muy cuidadosamente** la especificación de la función requerida
+	  - Parámetros (nombre y tipos)
+	  - Tipo de retorno (tipo)
+	  - Restricciones (si alguna)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (7/15)
+
+- Para iniciar el ejercicio
+	- Haga click en 'Nuevo envío':
+
+<img src="iph/n1/img/envio_senecode.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (8/15)
+
+- Se desplegará un esqueleto de la función a implementar
+
+<img src="iph/n1/img/alt_persona_2.png" alt="" style="width: 90%; height: 30%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (9/15)
+
+- **¿Por qué la documentación se ve algo diferente?**
+	- En IP Honores
+		- Usamos el formato de documentación estándar de Python
+	- senecode usa un versión traducida de la documentación:
+		- `Args`: → Parámetros
+		- `Return`: → Retorno
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (10/15)
+
+- Implemente la siguiente función **en Spyder**
+	- `altura_en_mts`
+	
+ - Copie su implementación final a senecode
+ - Reemplace la palabra "`pass`" por su implementación 
+- Clic en 'Subir solución' para enviarla
+
+<img src="iph/n1/img/alt_persona_3.png" alt="" style="width: 90%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (11/15)
+
+- La revisión sintáctica **debe** ser exitosa
+
+<img src="iph/n1/img/revision_vc.png" alt="" style="object-fit: scale-down">
+
+
+- Si la revisión sintáctica falla
+	- Resuelva el error de sintaxis en su código
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (12/15)
+
+- Clic en 'Enviar solución' para enviar la solución
+
+<img src="iph/n1/img/revision_vc.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (13/15)
+
+- Después de enviar
+	- Espere unos segundos a que senecode califique
+
+<img src="iph/n1/img/alt_persona_4.png" alt="" style="object-fit: scale-down">
+
+
+- Luego, **refresque** la página o haga clic en 'Ver envío'
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV  (14/15)
+
+- La retroalimentación **NO** debe mostrar errores
+
+<img src="iph/n1/img/alt_persona_5.png" alt="" style="object-fit: scale-down">
+
+
+- Si hay errores, debe corregirlos e intentar un nuevo envío
+	- Tiene **intentos ilimitados**
+		- No se penaliza reintentos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Actividad IV (15/15)
+
+- Repita el proceso anterior
+	- Resolviendo **todos** los ejercicios del Tarea 1 de N1
+- Fecha límite de entrega:
+	- **Viernes 22 de febrero 11pm**
+	- Recuerde: Esta tarea es un **evaluable** de Nivel 1
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Fin de N1-L2
+
+<br>
+
+ [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_20/#)
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":"0.025","minScale":"0.1","maxScale":"2.0","controls":"true","controlsLayout":"bottom-right","progress":"true","slideNumber":"true","center":"false","transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
