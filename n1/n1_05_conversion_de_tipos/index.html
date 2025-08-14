@@ -99,17 +99,19 @@ Universidad de los Andes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Conversión de tipos (1/2)
+### "Conversión" de tipos (1/2)
 
-- Crear un nuevo objeto
-	- Con un **tipo de dato** deseado 
-		- Basado en el **valor** del original
+- En realidad no se "convierte" sino que se
+	- Crea un nuevo objeto
+		- Con un **tipo de dato** deseado 
+			- Basado en el **valor** del original
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Conversión de tipos (2/2)
 
-- El objeto original **permanece intacto**, sin modificaciones
+- El objeto original **permanece intacto**
+	- Sin modificaciones
 - Las funciones de conversión de Python
 	- Retornan un **nuevo objeto**
 		- Cuando tienen efecto
@@ -257,8 +259,8 @@ int('abc12')
 ```Plaintext
 Traceback (most recent call last):
 	Cell In[...] line …
-		int('ab12')
-ValueError: invalid literal for int() with base 10: 'ab12'
+		int('abc12')
+ValueError: invalid literal for int() with base 10: 'abc12'
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
