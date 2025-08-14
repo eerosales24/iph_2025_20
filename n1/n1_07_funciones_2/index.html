@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/iph.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/spyder.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### <i class="fas fa-award"></i> IP Honores
+
+ ####  *Funciones II*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de funciones en Python
+
+<br>
+
+- Función integrada (built-in function)
+
+<br>
+
+- **Función definida por el usuario (user-defined function)**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Función definida por el usuario  
+#### (user-defined function)
+
+- Definida por los programadores
+
+- Hay una sintaxis para *definir* (*declarar*) una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Por qué necesitamos funciones? (1/3)
+
+- **Reusabilidad**
+
+- Crear **una vez**
+    - Usar **muchas veces**
+- Evitar la duplicación de código
+- Reducir el riesgo de errores 
+    - En múltiples ubicaciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Por qué necesitamos funciones? (2/3)
+
+- **Modularidad/Encapsulamiento**
+
+- Desglosar problemas grandes en **piezas más sencillas**
+    - Basadas en funciones
+- Mejorar la legibilidad del código
+	- Trabajar con piezas de código 
+		- **Concisas y de propósito específico**
+
+<br>
+
+<img src="iph/n1/img/modularidad.png" alt="" style="width: 15%; height: 25%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Por qué necesitamos funciones? (3/3)
+
+- **Aislamiento**
+
+	- Facilitar la prueba y depuración
+		- De una pieza de un programa
+	- Cada función tiene pruebas independientes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Sintaxis básica de una función
+
+```Python
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `def`
+
+- Introduce la definición (declaración) de una función
+	- La palabra clave `def` no hace parte de la signatura
+	  
+```Python[1]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Signatura y cuerpo de la función
+
+- Una función puede dividirse en dos partes:
+	- Signatura o encabezado
+	- Cuerpo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Estudiemos la signatura de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### nombre_funcion
+
+- El nombre dado a una función
+
+```Python[2]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### nombre_funcion - Ejemplo
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+```
+
+- `suma` es el nombre de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetro
+
+- Nombre de un dato de entrada de la función, en su definición
+
+```Python[3]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Lista de parámetros
+
+- Una función puede tener cero, uno o varios parámetros
+	- Si hay varios se separan por comas
+	- La lista se encierra entre paréntesis
+
+```Python[3,4]
+def 
+nombre_funcion
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo del parámetro
+
+- Cada parámetro tiene un tipo de dato
+```Python
+(parametro_1: tipo_parametro_1 ... 
+ parametro_n: tipo_parametro_n) 
+```
+
+	<br>
+
+- Los dos puntos anteceden el tipo del parámetro
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetros - Ejemplo
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+```
+
+<br>
+
+- `primer_operando` y `segundo_operando`
+	- Son los parámetros de la función `suma`
+- Ambos son del tipo `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo de retorno
+
+- Tipo de dato del valor de retorno de la función
+
+```Python[5]
+def 
+nombre_funcion
+(paramentro_1: tipo_parametro_1 ... 
+ paramentro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipo de retorno - Ejemplo
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+```
+
+<br>
+
+
+- El tipo de retorno de la función `suma`
+	- Es del tipo `int`
+		- La suma aritmética de dos `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Estudiemos el cuerpo de la función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Cuerpo de la función
+
+- Contiene las instrucciones que la función ejecuta
+
+```Python[6]
+def 
+nombre_funcion
+(paramentro_1: tipo_parametro_1 ... 
+ paramentro_n: tipo_parametro_n) 
+ -> tipo_de_retorno:
+     # Cuerpo de la función
+```
+
+- El cuerpo de la función es un bloque de código
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Bloque de código
+
+- Grupo de instrucciones relacionadas
+	- Marcado por una _indentación_ idéntica
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Indentación
+
+- Iniciar una línea de código con espacios en blanco
+- Por convención
+	- Se usa **4 espacios** en blanco
+	
+<img src="iph/n1/img/indentacion.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Retorno de una función
+
+- Retorno:
+	- La función puede retornar un resultado
+		- En Python, esto se logra con la instrucción `return`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La función `suma()`
+		
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+```
+
+<br>
+
+- El algoritmo de esta función es muy sencillo
+	- Solo se suma dos operandos
+		- Y se retorna el resultado
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿Cómo se invocaría a la función `suma()`?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Invocación 🌀
+
+- Nombre dado al proceso de llamar una función para ejecutarla
+- Ej:
+```Python
+type('argumento')  # → str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 Argumento 🌀
+
+- Nombre de un dato de entrada de la función, al invocarla
+- Una función puede esperar cero, uno o varios argumentos
+- Ej:
+	- La función `type()` espera un solo argumento
+	- En este caso, se invoca a esa función
+		- Usando un argumento del tipo string
+```Python
+type('este_es_un_argumento')  # → str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Argumento y parámetros
+
+- El número de argumentos debe corresponderse
+	- Con el número de parámetros
+
+- Aquí se llama a la función `suma()`
+	- Usando los argumentos: `2` y `2`
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+    
+suma(2, 2)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (1/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (2/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- Argumentos enviados:
+	- `3` <!-- .element: class="fragment" data-fragment-index="1" -->
+	- `4` <!-- .element: class="fragment" data-fragment-index="2" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (3/15)
+
+```python[1,4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- `primer_operando` toma el valor de: `3` <!-- .element: class="fragment" data-fragment-index="1" -->
+-  `segundo_operando` toma el valor de: `4` <!-- .element: class="fragment" data-fragment-index="2" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-auto-animate="true" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (4/15)
+
+
+```python[2]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+
+<div class="mermaid">
+flowchart TD
+subgraph id["\n-"]
+    A["3 + 4"] 
+    A --> 7
+end
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (5/15)
+
+```python[2]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- `suma()` retorna: `7` <!-- .element: class="fragment" data-fragment-index="1" -->
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->`7` es el valor de retorno
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (6/15)
+
+```python[1,2]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- El tipo de retorno es: `int` <!-- .element: class="fragment" data-fragment-index="1" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (7/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- El valor asignado a `resultado`  es: `7` <!-- .element: class="fragment" data-fragment-index="1" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (8/15)
+
+```python[5]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- El argumento usado para invocar a `print()` es: `7` <!-- .element: class="fragment" data-fragment-index="1" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (9/15)
+
+```python[5]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+- `print()` muestra en pantalla:  `7` <!-- .element: class="fragment" data-fragment-index="1" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (10/15)
+
+```python[4,5]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuántas funciones fueron invocadas en total?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos:
+		- `suma()`
+		- `print()`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (11/15)
+
+```python[1]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuántos parámetros espera la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos:
+		- `primer_operando`
+		- `segundo_operando`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (12/15)
+
+```python[1]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿De que tipo son los parámetros que espera la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ambos son `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (13/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuántos argumentos se usaron para invocar a la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Dos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (14/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿De que tipo son los argumentos usados al invocar la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Ambos son `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ejemplo de invocación (15/15)
+
+```python[4]
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+
+resultado = suma(3, 4)
+print(resultado)
+```
+
+<br>
+
+- ¿Cuáles argumentos se usaron para invocar a la función `suma()` ?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->3 y
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->4
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Orden de argumentos (1/2)
+
+- El orden de los argumentos en la invocación **importa**:
+
+```python
+def resta(primer_operando: int, segundo_oeprando: int) -> int:
+    # Al invocarse la función así: resta(10, 5)
+      # `primer_operando` será igual a 10
+      # `segundo_oeprando` será igual a 5
+    return primer_operando - segundo_oeprando  # Retorna 5
+```
+
+```python
+resta(10, 5)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz I
+
+```python
+def resta(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando - segundo_operando
+```
+
+¿Cuál es el resultado de la siguiente instrucción?
+```python
+resta(5, 10)
+```
++ -5 <!-- .element: class="fragment" data-fragment-index="1" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Orden de argumentos (2/2)
+
+
+```python
+def resta(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando - segundo_operando
+```
+
+<br>
+
+- Estas dos invocaciones son **distintas**:
+
+```python
+resta(10, 5)  # → 5
+
+resta(5, 10)  # → -5
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz II
+
+- Esta función 
+	- Recibe como datos de entrada a **dos flotantes**
+	- Produce como salida (resultado) un flotante
+	
+```Python
+def suma(num1: float, num2: float) -> float:
+    return num1 + num2
+```
+
+<br>
+
+- ¿Serviría esta función si se le pasan argumentos enteros?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Sí
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Porque un `int` "cabe" adentro de un `float`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz III
+
+- Esta función 
+	- Recibe como datos de entrada a dos flotantes
+	- Produce como salida (resultado) **un flotante**
+	
+```Python
+def suma(num1: float, num2: float) -> float:
+    return num1 + num2
+```
+
+<br>
+
+- Si le se pasara como argumento dos enteros
+	- ¿De que tipo sería el valor de retorno de la función?
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`int`
+		- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Porque la suma de dos enteros es un `int`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<i class="fas fa-question-circle fa-2x fa-spin fa-4x"></i>
+
+<br>
+<br>
+
+ [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_20/#)
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":"0.025","minScale":"0.1","maxScale":"2.0","controls":"true","controlsLayout":"bottom-right","progress":"true","slideNumber":"true","center":"false","transition":"slide","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
