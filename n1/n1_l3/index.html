@@ -437,8 +437,23 @@ Universidad de los Andes
 
 - ¿Qué valor será asignado a `resultado` después de ejecutar el siguiente código?
 
-<img src="Screenshot 2025-08-16 at 11.25.17 AM.png" alt="" style="object-fit: scale-down">
+```python
+def division(dividendo: int, divisor: int) -> float:
+    """
+    Calcula la división de dos números enteros.
 
+    Args:
+        dividendo (int): Número a dividir.
+        divisor (int): Número por el cual se divide.
+
+    Returns:
+        float: El resultado de la división.
+    """
+    return dividendo / divisor
+
+
+resultado = division(19, 2)
+```
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**Respuesta:**
 	- `9.5`
@@ -449,7 +464,23 @@ Universidad de los Andes
 
 - ¿Qué valor será asignado a `resultado` después de ejecutar el siguiente código?
 
-<img src="Screenshot 2025-08-16 at 11.24.21 AM.png" alt="" style="object-fit: scale-down">
+```python
+def modulo(dividendo: int, divisor: int) -> int:
+    """
+    Calcula el módulo (residuo) de dos números enteros.
+
+    Args:
+        dividendo (int): número a dividir.
+        divisor (int): número por el cual se divide.
+
+    Returns:
+        int: El residuo de la división entre los números enteros.
+    """
+    return dividendo % divisor
+
+
+resultado = modulo(19, 2)
+```
 
 
 - &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**Respuesta:**
@@ -1148,7 +1179,7 @@ Got:
 ```
 
 - El tercer test es falla:
-	- Salida esperada: `-10`
+	- Salida esperada: `-12`
 	- Salida obtenida: **`-2`**
 		- Porque  `primer_operando` es igual a **`-2`**
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
