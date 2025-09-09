@@ -89,7 +89,7 @@
 
 ### <i class="fas fa-award"></i> IP Honores
 
-#### *Más operaciones de los strings*
+#### *Diccionarios y sus operaciones básicas II*
 
 [Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
 
@@ -99,206 +99,79 @@ Universidad de los Andes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### `str.format()`
-
-- Formateo de strings
-	- Con marcadores de posición 
-		- Para expresiones
+### Operadores de pertenencia (o Membresía) - Diccionarios
+    
 - Sintaxis: 
 ```Python
- 'string {}'.format(expresion)
+x in diccionario
+x not in diccionario
 ```
-- `expresion` se evalúa en tiempo de ejecución
-- Compatible con Python 3.6 o menor
-- Soporta el formateo de decimales
-- Ayuda:  [format](https://docs.python.org/3/library/stdtypes.html#str.format)
+- `x`: Llave a buscar
+- `diccionario`: En donde buscar la llave
+- `x in diccionario` : devuelve `True` 
+	- Si se encuentra `x` en `diccionario`
+	- Caso contrario `False`
+- `not in`: negación de:  `x in diccionario`
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-#### `str.format()` - Ejemplos
+### Operadores de pertenencia (o Membresía) - Ejemplos
 
 ```Python
-print('Result: {}'.format(5))  # → 'Result: 5'
-
-print('{} + {} = {}'.format(20, 30, 20 + 30))  # → '20 + 30 = 50'
-# `(20, 30, 20 + 30)` se resuelve en tiempo de ejecución
-
-print('{} / {} = {:.2f}'.format(1, 3, 1 / 3))  # → '1 / 3 = 0.33
-# `{:.2f}` se formatea, usando dos decimales
+# Asumir ejecución secuencial de cada línea:
+notas = {'Lyn':2.0, 'Jim':5.0, 'Chris':3.5, 'George':4.6 }
+'Lyn' in notas  # → True
+'George' in notas   # → True
+'Pedro' in notas   # → False
+'Jim' in notas  # → True
+'Pedro' not in notas  # → True
+'Chris' in notas and 'Pedro' not in notas  # → True
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-###  f-strings
+### Quiz I
+
+- ¿Cuál es el resultado de ejecutar el siguiente código si el usuario ingresa: `Manzana`?
+
+```Python
+precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
+                 'Papaya': 5600, 'Naranja': 8700}
+
+fruta_buscada = input("Digite la fruta de la" \
+                      "cual quiere conocer el precio: ")
     
-- Formateo de strings usando una 
-	- Expresión embebida (integrada)
-- Sintaxis:
-    ```Python
- f'string {expresion}'
-```
+precio = precio_frutas.get(fruta_buscada)
 
-- `expresion` se evalúa en tiempo de ejecución
-- Soporta formateo de decimales
-- Introducida a partir de Python 3.6
-- Ayuda: [f-strings ](https://docs.python.org/3/tutorial/inputoutput.html#tut-f-strings)
+if fruta_buscada in precio_frutas:
+    print("El precio de la {} es: "\
+          "{}.".format(fruta_buscada, precio))
+else:
+    print("El precio de la fruta {} " \
+          "no está disponible.".format(fruta_buscada))
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-###  f-strings - Ejemplos
+### Quiz I - Solución
 
 ```Python
-print(f'Result: {5}')  # → 'Result: 5'
-print(f'{20} + {30} = {20 + 30}')  # → '20 + 30 = 50'   
-print(f'{1} / {3} = {1 / 3:.2f}')  # → '1 / 3 = 0.33'
+precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
+                 'Papaya': 5600, 'Naranja': 8700}
+
+fruta_buscada = input("Digite la fruta de la" \
+                      "cual quiere conocer el precio: ")
+    
+precio = precio_frutas.get(fruta_buscada)
+
+if fruta_buscada in precio_frutas:
+    print("El precio de la {} es: "\
+          "{}.".format(fruta_buscada, precio))
+    # → El precio de la Manzana es: 9000.
+else:
+    print("El precio de la fruta {} " \
+          "no está disponible.".format(fruta_buscada))
 ```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Aspectos de codificación - ASCII
-
-- American Standard Code for Information Interchange
-- Desarrollado en los 60s para estandarizar la comunicación digital
-- 127 Caracteres: 
-	- Incluye letras, dígitos, símbolos de puntuación y comandos de control
-- 7 Bits: 
-	- Cada carácter se representa con 7 bits
-		- Comúnmente almacenado en 8 bits (1 byte)
-- Interoperabilidad: 
-	- Facilita el intercambio de datos entre dispositivos y software
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<img src="iph/n2/img/ascii.png" alt="" style="width: 90%; height: 70%; object-fit: fill">
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Unicode
-
-- Permite la representación de texto 
-	- De la mayoría de sistemas de escritura
-- Cobertura: 
-	- Incluye más de 140,000 caracteres 
-	- Abarcando escrituras modernas, símbolos, emojis y caracteres históricos
-- Codificación universal: UTF-8, UTF-16, UTF-32
--  Hay una lista de [códigos Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `ord()`
-
-- Retorna el valor Unicode de un carácter
-- Sintaxis:
-```Python
-ord(c)
-```
-	- `c`: String de un solo carácter
-- Útil para obtener la representación numérica 
-	- De un carácter
-- Ayuda:  [ord](https://docs.python.org/3.4/library/functions.html#ord)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `ord()` -  Ejemplos
-
-```Python
-ord('a')  # → 97 (valor Unicode de 'a')
-ord('A')  # → 65 
-ord('0')  # → 48 
-ord('ñ')  # → 241 
-ord(' ')  # → 32
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `chr()`
-
-- Retorna el carácter que corresponde a un valor Unicode
-- Sintaxis:
-```Python
-chr(i)
-```
--`i`: Entero en el rango de [códigos Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
-- Útil para convertir valores Unicode 
-	- A sus caracteres correspondientes
-- Ayuda:  [chr](https://docs.python.org/3.4/library/functions.html#chr)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `chr()` - Ejemplos
-
-```Python
-chr(97)  # → 'a' (97 es valor Unicode de 'a')
-chr(65)  # → 'A' 
-chr(48)  # → '0' 
-chr(241)  # → 'ñ' 
-chr(32)  # → ' '
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Comparación (lexicográfica) de strings (1/4)
-
-- Comparación de dos strings, carácter a carácter
-- El orden está determinado por
-	- Los [códigos Unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters)
-- Ej:
-
-```Python
-ord('a')  # → 97
-
-ord('B')  # → 65
-
-'B' < 'a'  # → True
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Comparación (lexicográfica) de strings (2/4)
-
-- Se comparan los caracteres uno a uno
-	- Siguiendo el orden de sus códigos Unicode
-- El primer carácter diferente en dos strings determina el resultado
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Comparación (lexicográfica) de strings (3/4)
-
-- Caso todo minúsculas:
-
-```python
-'apple' < 'banana'. # → True (porque 'a' < 'b')
-'car' > 'cat'. # → False (porque 'r' < 't')
-```
-
-- Caso con minúsculas y mayúsculas:
-
-```python
-'Zebra' < 'apple'  # → True ('Z' = 90, 'a' = 97) 
-'Zoo' > 'apple'  # → False ('Z' viene antes que 'a')
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Comparación (lexicográfica) de strings (4/4)
-
-- Caso números vs letras:
-
-```python
-'123' < 'abc'  # → True (porque '1' = 49 y 'a' = 97)
-'9' > 'A'. # → False ('9' = 57, 'A' = 65)
-```
-
-- Caso con diferente longitud:
-
-```python
-'cat' < 'catalog'   # → True (3 vs. 7)
-'hello' > 'hell'    # → True (5 vs 4)
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo saber la longitud o tamaño de un string?
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -309,203 +182,36 @@ ord('B')  # → 65
 ```Python
 len(objeto)
 ```
-
 - Compatible con múltiples objetos
-	- Por ejemplo **strings**
-- Ayuda: [len](https://docs.python.org/3/library/functions.html#len)
+	- Por ejemplo **diccionarios**
+- Ayuda:  [len](https://docs.python.org/3/library/functions.html#len)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### `len()` - Ejemplos
 
 ```Python
-len('')  # → 0 (string vacío)
+len({})  # → 0: Diccionario vacío
 
-len('Python')  # → 6 (`Python` tiene 6 caracteres)
+len({'a':1})  # → 1: Diccionario de un solo par llave-valor
 
-len('Hello World!')  # → 12 (Los espacios son caracteres)
+len({'a':1, 'b':2, 'c':3})  # → 3: Debido a 3 pares llave-valor
 ```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Operadores de pertenencia (o membresía) (1/2)
-
-- `in`
-- Sintaxis:
-```Python
-x in s
-```
-- `x`: elemento a buscar
-- `s`: secuencia dentro de la cual buscar
-- `x in s` : devuelve `True` 
-	- Si se encuentra `x` en `s`
-	- Caso contrario `False`
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Operadores de pertenencia (o membresía) (2/2)
-
--  `not in`
-- Sintaxis:
-```Python
-x not in s
-```
-- `x`: elemento a buscar
-- `s`: secuencia dentro de la cual buscar
-- `x not in s` : devuelve `True`
-	- Si no se encuentra `x` en `s`
-	- Caso contrario `False`
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Operadores de pertenencia (o membresía) - Ejemplos
-
-```Python
-# Asumir ejecución secuencial de cada línea:
-frase = '¡Python es divertido!'
-' ' in frase  # → True
-'!' in frase  # → True
-'divertido' in frase  # → True
-'z' in frase  # → False
-'z' not in frase  # → True
-'a' not in frase  # → True
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `str` es una clase
-    
-- Una *clase* especifica comportamientos de objetos
-- No es el objetivo del curso usar clases
-- Basta con saber que
-	- `str` es el "molde" 
-		- Para crear strings
-- Esto objetos tienen comportamientos
-	-  Implementados vía funciones especiales
-		- Denominadas *métodos*
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `str` tiene métodos
-
-- Por ejemplo, `str.format()`
-	- Es un método de los strings
-
-
-```python
-
-"Resultado = {}".format(10 + 10)  # → 'Resultado = 20'
-# No se podría invocar a format()
-    # Si no se antecede de un string
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo se invoca a un método de la clase `str`?
-
-- Como al invocar funciones:
-	- \+ Anteponiendo un objeto del tipo válido
-
-
-- **En genérico:**
-	- `str.nombre_metodo(arg_1, arg_2, .... arg_n)`
-		- En donde: 
-			- `str` es un objeto del tipo string
-			- Se usa notación de punto, después del string
-				- La invocación puede requerir cero, uno o `n` argumentos
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Estudiemos un método de los strings como ejemplo
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `str.isdigit()`
-    
-- Determina si el string
-	- Es completamente dígitos
-		- Esto es: `0` al `9`
-- Retorna `True` si todos los caracteres son dígitos
-	- Caso contrario `False`
-- Ayuda:  [str.isdigit](https://docs.python.org/3/library/stdtypes.html#str.isdigit)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo se invoca al método `str.isdigit()`?
-
-```python
-# str.isdigit()
-	# En donde: 
-	    #`str` es un objeto del tipo string
-		    # Del cual se desea saber si está compuesto por solo dígitos
-			    # La invocación requiere cero argumentos
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `str.isdigit()` - Ejemplos
-
-```Python
-'1234'.isdigit()  # → True (Todos son dígitos)
-
-'1.5'.isdigit()  # → False: (El punto `.` no es un dígito)
-
-'1 5'.isdigit()  # → False: (Los espacios no son dígitos)
-
-'$5'.isdigit()  # → False: (Los símbolos no son dígitos)
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz I
-
-- ¿Qué hace el siguiente programa?
-
-```Python
-pin = input('Por favor digite un PIN de cuatro dígitos: ')
-
-if len(pin) != 4:
-    print('El PIN debe tener cuatro dígitos de longitud')
-else:
-    print('El PIN se ha guardado')
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz I - Solución
-
-```Python
-pin = input('Por favor digite un PIN de cuatro dígitos: ')
-
-if len(pin) != 4:
-    print('El PIN debe tener cuatro dígitos de longitud')
-else:
-    print('El PIN se ha guardado')
-```
-
-- Solicita al usuario un PIN de 4 dígitos
-- Si el PIN no coincide con esa longitud
-	- Imprime: 
-		- "El PIN debe tener 4 caracteres de longitud"
-- Caso lo contrario, imprime:
-	- "El PIN se ha guardado"
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz II
 
-- ¿Qué hace el siguiente programa?
+- ¿Cuál es el resultado de ejecutar el siguiente código?
 
 ```Python
-pin = input('Por favor digite un PIN de cuatro dígitos: ')
-confirmacion_pin = input('Por favor confirme el PIN: ')
+precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
+                 'Papaya': 5600, 'Naranja': 8700}
 
-if len(pin) != 4:
-    print('El PIN debe tener cuatro dígitos de longitud')
-elif pin == confirmacion_pin:
-    print('El PIN se ha guardado')
-else:
-    print('Error: Los PINs no coinciden')
+longitud = len(precio_frutas)
+
+if longitud == 4:
+    print(f'Hay {longitud} precios de frutas disponibles.')
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -513,99 +219,417 @@ else:
 ### Quiz II - Solución
 
 ```Python
-pin = input('Por favor digite un PIN de cuatro dígitos: ')
-confirmacion_pin = input('Por favor confirme el PIN: ')
+precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
+                 'Papaya': 5600, 'Naranja': 8700}
 
-if len(pin) != 4:
-    print('El PIN debe tener cuatro dígitos de longitud')
-elif pin == confirmacion_pin:
-    print('El PIN se ha guardado')
-else:
-    print('Error: Los PINs no coinciden')
+longitud = len(precio_frutas)
+
+if longitud == 4:
+    print(f'Hay {longitud} precios de frutas disponibles.')
+    # → Hay 4 precios de frutas disponibles.
 ```
-
-- Solicita al usuario un PIN de 4 dígitos
-- Solicita al usuario que confirme el PIN
-- Si el PIN no coincide con esa longitud, imprime: 
-	- "El PIN debe tener 4 dígitos de longitud"
-- Si ambas entradas coinciden, imprime: 
-	- "El PIN se ha guardado"
-- Caso alterno, imprime: 
-	- "Error: los PINs no coinciden"
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz III
 
-- ¿Qué hace el siguiente programa?
+- ¿Cuál es el resultado de ejecutar el siguiente código?
 
 ```Python
-pin = input('Por favor digite un PIN de cuatro dígitos: ')
-confirmacion_pin = input('Por favor confirme el PIN: ')
+precio_frutas = {}
 
-if len(pin) != 4:
-    print('El PIN debe tener cuatro dígitos de longitud')
-elif not pin.isdigit():
-    print('El PIN debe contener sólo dígitos')
-elif pin == confirmacion_pin:
-    print('El PIN se ha guardado')
+if not precio_frutas:
+    print("No hay precios de frutas disponibles.")
 else:
-    print('Error: Los PINs no coinciden')
+    print(f"Hay {len(precio_frutas)} " \
+          "precios de frutas disponibles.")
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz III - Solución
 
-- Pide al usuario un PIN de 4 dígitos
-- Pide al usuario que confirme el PIN
-- Si el PIN no coincide con esa longitud, imprime: 
-	- "El PIN debe tener 4 dígitos de longitud"
-- Si el PIN no contiene solo dígitos (0-9), imprime: 
-	- "El PIN debe contener solo dígitos"
-- Si ambas entradas coinciden, imprime: 
-	- "El PIN se ha guardado"
-- Caso alterno, imprime: 
-	- "Error: Los PINs no coinciden"
+```Python
+precio_frutas = {}
+
+if not precio_frutas:
+    print("No hay precios de frutas disponibles.")
+    # → No hay precios de frutas disponibles.
+else:
+    print(f"Hay {len(precio_frutas)} " \
+          "precios de frutas disponibles.")
+
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz IV
 
-- ¿Qué hace el siguiente programa?
+- ¿Cuál es el resultado de ejecutar el siguiente código?
 
 ```Python
-pin = input('Por favor digite un PIN de cuatro dígitos: ')
-confirmacion_pin = input('Por favor confirme el PIN: ')
- 
-if pin == confirmacion_pin:
-    if len(pin) != 4:
-        print('El PIN debe tener cuatro dígitos de longitud')
-    elif not pin.isdigit():
-        print('El PIN debe contener sólo dígitos')
-    else:
-        print('El PIN se ha guardado')
+precio_frutas = {'Guanabana': 14000}
+
+if not precio_frutas:
+    print("No hay precios de frutas disponibles.")
 else:
-    print('Error: PIN distintos')
+    print(f"Hay {len(precio_frutas)} " \
+          "precio(s) de frutas disponibles.")
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
 ### Quiz IV - Solución
 
-- Pide al usuario un PIN de 4 dígitos y confirmación
-- Si ambas entradas coinciden, chequea:
-	- Si el PIN no tiene 4 dígitos, imprime: 
-		- "El PIN debe tener 4 dígitos de longitud"
-	- Si el PIN no es solo dígitos (0-9), imprime: 
-		- "El PIN debe contener solo dígitos"
-	- Caso alterno, imprime: 
-		- "El PIN se ha guardado"
-- Caso alterno, imprime: "Error: PIN distintos"
+```Python
+precio_frutas = {'Guanabana': 14000}
+
+if not precio_frutas:
+    print("No hay precios de frutas disponibles.")
+else:
+    print(f"Hay {len(precio_frutas)} " \
+          "precio(s) de frutas disponibles.")
+    # → Hay 1 precio(s) de frutas disponibles.
+```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Continuará...
+### ¿Puedo pasar un diccionario como argumento?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos (1/3)
+
+- El paso como argumento se refiere a cómo se envía algo
+	- Entre la invocación de la función y la función
+- Python usa un *"paso por asignación"*
+	- La función **recibe una referencia**
+		- No el objeto en sí
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos (2/3)
+
+- No es el objetivo del curso
+	- Comprender en detalle 
+		- El paso por asignación
+- Basta con saber que
+	- Un diccionario **se puede pasar a una función**
+	- Un diccionario que se pasa a una función
+		- **Puede ser modificado por la función**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos (3/3)
+- Hay dos posibles casos de pasos de argumentos:
+	1. Paso de inmutables
+	2. Paso de mutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de datos inmutables
+
+- Un tipo de dato es inmutable
+	- Si después de crearlo, **no se puede cambiar**
+- Tipos de datos inmutables vistos hasta ahora:
+	- `int`
+	- `float`
+	- `str`
+	- `bool`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables - Ejemplo (1/2)
+
+```Python
+mensaje_original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    mensaje = 'Esto solo cambia la variable local'
+    print(mensaje)  # → 'Esto solo cambia la variable local'
+
+print(mensaje_original)  # → Original
+intentar_modificar(mensaje_original)
+print(mensaje_original)  # → Original
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables - Ejemplo (2/2)
+
+- Los strings no pueden ser cambiados
+	- Lo que se cambió fue a
+		- La variable local: `mensaje`
+
+```Python[5,6]
+mensaje_original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    # mensaje es una variable local
+    mensaje = 'Esto solo cambia la variable local'
+    print(mensaje)  # → 'Esto solo cambia la variable local'
+
+print(mensaje_original)  # → Original
+intentar_modificar(mensaje_original)
+print(mensaje_original)  # → Original
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de datos mutables
+
+- Un tipo de dato es mutable
+	- Si después de crearlo, se puede cambiar
+- Tipos de datos mutables vistos hasta ahora:
+	- `dict`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (1/2)
+
+```Python
+diccionario_original = {'clave': 'valor original'}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    diccionario['clave'] = 'Se cambió a `diccionario_original`'
+    print(diccionario)  
+    # → {'clave': 'Se cambió a `diccionario_original`'}
+
+print(diccionario_original)  # → {'clave': 'valor original'}
+modificar_diccionario(diccionario_original)  
+print(diccionario_original)  
+# → {'clave': 'Se cambió a `diccionario_original`'}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (2/2)
+
+- Un diccionario es mutable
+	- Y por lo tanto, **una función puede cambiarlo**
+
+```Python[4,5,6]
+diccionario_original = {'clave': 'valor original'}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    diccionario['clave'] = 'Se cambió a `diccionario_original`'
+    print(diccionario)  
+    # → {'clave': 'Se cambió a `diccionario_original`'}
+
+print(diccionario_original)  # → {'clave': 'valor original'}
+modificar_diccionario(diccionario_original)  
+print(diccionario_original)  
+# → {'clave': 'Se cambió a `diccionario_original`'}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz V
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+dia_actual = 'Hoy'
+
+def intentar_cambiar_dia(dia: str) -> None:
+    print(dia)
+    dia = 'Mañana'  
+    print(dia)
+
+print(dia_actual)
+intentar_cambiar_dia(dia_actual)
+print(dia_actual)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz V - Solución
+
+```Python
+dia_actual = 'Hoy'
+
+def intentar_cambiar_dia(dia: str) -> None:
+    print(dia)  # → Hoy
+    dia = 'Mañana'  # Aquí solo se cambió a la variable local
+    print(dia)  # → Mañana
+
+print(dia_actual)  # → Hoy
+intentar_cambiar_dia(dia_actual)
+print(dia_actual)  # → Hoy
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VI
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+valor_inicial: int = 1
+
+def intentar_modificar_valor(valor: int) -> None:
+    print(valor)
+    valor = 9
+    print(valor)
+
+print(valor_inicial)
+intentar_modificar_valor(valor_inicial)
+print(valor_inicial)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VI - Solución
+
+```Python
+valor_inicial: int = 1
+
+def intentar_modificar_valor(valor: int) -> None:
+    print(valor)  # → 1
+    valor = 9  # Aquí solo se cambió a la variable local
+    print(valor)  # → 9
+
+
+print(valor_inicial)  # → 1
+intentar_modificar_valor(valor_inicial)
+print(valor_inicial)  # → 1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VII
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+valor_inicial: int = 1
+
+def retornar_valor(valor: int) -> int:
+    print(valor)
+    valor = 9
+    print(valor)
+    return valor  
+
+print(valor_inicial)
+valor_inicial = retornar_valor(valor_inicial)  
+print(valor_inicial)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VII - Solución
+
+```Python
+valor_inicial: int = 1
+
+def retornar_valor(valor: int) -> int:
+    print(valor)  # → 1
+    valor = 9   # Aquí se cambió a la variable local
+    print(valor)  # → 9   
+    return valor  # Aquí se retornó a la variable local
+
+print(valor_inicial)  # → 1
+# `valor_inicial` se actualiza con el valor retornado:
+valor_inicial = retornar_valor(valor_inicial)  
+print(valor_inicial)  # → 9
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### En resumen
+
+- Un inmutable: 
+	- **No puede ser cambiado** dentro de una función
+- Un mutable:
+	- **Puede ser cambiado** por una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Estudiemos más métodos de los diccionarios
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.copy()`
+
+- Crea una copia del diccionario 
+- Sintaxis:  
+
+```Python 
+diccionario_copia = diccionario_original.copy()
+```
+
+- No modifica el diccionario original
+- Útil cuando se necesita trabajar con una copia
+    - Y evitar modificar el original
+	    - Porque **un diccionario es mutable**
+- Ayuda:  [dict.copy](https://docs.python.org/3/library/stdtypes.html#dict.copy)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.copy()` - Ejemplos 
+
+```Python
+# Asumir ejecución secuencial de cada línea:
+
+dct_original = {'a':1, 'b':2}
+
+copia_dct = dct_original.copy()  # copia_dct = {'a':1, 'b':2}
+
+copia_dct['c'] = 3  # copia_dct = {'a':1, 'b':2, 'c':3}
+
+print(dct_original)  # → {'a':1, 'b':2}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VIII
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+original_dict = {'Juan': 18, 'Ana': 22}
+copia = original_dict.copy()
+original_dict['Juan'] = -1
+copia['Ana'] = -1
+print(original_dict)
+print(copia)
+copia['Pedro'] = 27
+print(original_dict)
+print(copia)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VIII - Solución
+
+```Python
+original_dict = {'Juan': 18, 'Ana': 22}
+copia = original_dict.copy()
+original_dict['Juan'] = -1
+copia['Ana'] = -1
+print(original_dict)  # → {'Juan': -1, 'Ana': 22}
+print(copia)  # → {'Juan': 18, 'Ana': -1}
+copia['Pedro'] = 27
+print(original_dict)  # → {'Juan': -1, 'Ana': 22}
+print(copia)  # → {'Juan': 18, 'Ana': -1, 'Pedro': 27}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<i class="fas fa-question-circle fa-2x fa-spin fa-4x"></i>
+
+<br>
+<br>
+
+ [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_20/#)
 </div></script></section></div>
     </div>
 
