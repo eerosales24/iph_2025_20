@@ -89,7 +89,7 @@
 
 ### <i class="fas fa-award"></i> IP Honores
 
-#### *Diccionarios y sus operaciones básicas I*
+ ####  *Laboratorio 3 de Nivel 2 - N2-L3*
 
 [Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
 
@@ -99,125 +99,31 @@ Universidad de los Andes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Parejas `llave-valor`​ (1/2)
-    
-- Mecanismo abstracto que permite 
-	- Asociar y almacenar​ llaves y valores
-- *Llave*: 
-	- Elemento único que permite 
-		- Recuperar y modificar un valor
-- *Valor*: 
-	- Información relacionada a la llave
+### Instrucciones generales
+
+- **Objetivos**
+	- Afianzar la comprensión de los conceptos de mutabilidad e inmutabilidad
+	- Afianzar la comprensión de la mutabilidad de los diccionarios
+	
+<br>
+
+- **¿Preguntas?**
+	- Formule su pregunta de forma **muy clara y concisa**
+		- Luego (**y solo luego de esto**)
+			- Levante la mano
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Parejas `llave-valor` (II)
+#  Actividad I
 
-<img src="iph/n2/img/dic_1.png" alt="" style="object-fit: scale-down">
+- **Objetivos:**
+	- Afianzar la comprensión de los diccionarios
+	- Afianzar la comprensión de la inmutabilidad
+	- Afianzar la comprensión de la mutabilidad de los diccionarios
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### ¿Por qué usar parejas `llave-valor`?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Parejas `llave-valor`​ (2/2)
-
-- Organización​
-	- Búsqueda rápida vía una llave única​
-- Acceso directo​
-	- Acceso inmediato a un valor​
-- Flexibilidad​
-	- Representa relaciones complejas entre datos​
-- Escalabilidad ​
-	- Maneja eficientemente muchos datos
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Parejas `llave-valor` en Python
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Diccionario
-
-- Colección mutable 
-- Mapea llaves únicas a valores
-
-<img src="iph/n2/img/dic_2.png" alt="" style="object-fit: scale-down">
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `dict`
-
-- Tipo de dato
-	- Representa a un diccionario en Python
-- Del tipo `dict` puede haber:
-	- Variables
-	- Parámetros
-	- Y tipos de retorno
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Llave
-
-- Elemento único que permite 
-	- Recuperar y modificar un valor
-- Debe ser de tipos de datos inmutables:
-	- `int`
-	- `float`
-	- `str`
-	- `bool`
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Valor
-
-- Información relacionada a la llave
-- Pueden ser de cualquier tipo:
-	- `int`
-	- `float`
-	- `str`
-	- `bool`
-	- **`dict`**
-- Es decir, un diccionario 
-	- Puede contener a otro diccionario
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Diccionarios en la vida real
-
-- *Diccionario español - inglés*:
-	- Llave: Palabra en español
-	- Valor: Palabra en inglés
-- *Google*:
-	- Llave: Palabra clave
-	- Valor: URL 
-		- Con relación a las palabras clave
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cuáles son las características principales de un diccionario?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Diccionarios - Características
-
-- Permiten retornar un valor **por llave**
-	- No por índice
-- Soporta el cálculo de su tamaño/longitud
-	- = Total de parejas llave-valor
-- No inherentemente ordenado
-	- Pero preserva el orden de inserción
-		- Desde Python 3.7+
-- Muy útil para búsquedas rápidas
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo se crea un diccionario en Python?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Creación de un diccionario -  Vía `{}`
+### 🌀 Creación de un diccionario -  Vía `{}` 🌀
 
 - Sintaxis: 
 ```Python
@@ -231,7 +137,7 @@ nombre_diccionario = {llave:valor}
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Creación de un diccionario -  Vía `{}` - Ejemplos
+###  🌀 Creación de un diccionario -  Vía `{}` - Ejemplos 🌀
 
 ```Python
 {}  # Diccionario vacío
@@ -249,627 +155,724 @@ varios_items = {'a':1, 7.1:True}  # Tipos de llave-valor diversos
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz I
+### Hay otra forma de crear diccionarios
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-- ¿Cuál es el resultado de ejecutar el siguiente código?
+### Creación de un diccionario - Vía `dict()` 
 
+- Sintaxis:
 ```Python
-diccionario = {}
+nombre_diccionario = dict(llave=valor)
+```
 
-print(diccionario)
+- `nombre_diccionario`: Nombre del diccionario
+    - (Idealmente) en plural
+- `llave=valor`: Pares de clave-valor, separados por comas
+- Cada `llave` es única e inmutable
+- **Nota**: Solo permite llaves que sean identificadores válidos
+	- Sin espacios, números al inicio, o caracteres especiales
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-type(diccionario)
+### Creación de un diccionario - Vía `dict()` - Ejemplos
+
+```python
+dict()  # Diccionario vacío
+
+# Diccionario con un solo elemento
+dict(a=1)  
+
+# Diccionarios con diferentes tipos de valores:
+enteros = dict(x=1, y=2, z=3)  
+flotantes = dict(a=0.4, b=1.3, c=2.9)  
+booleanos = dict(On=True, Off=False)  
+strings = dict(apple="red", lime="green")  
+
+# Mezcla de tipos de valores:
+items_varios = dict(a=1, b=0.2, c="x") 
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz I - Solución
-
-```Python
-
-diccionario = {}
-
-print(diccionario)  # → {}
-
-type(diccionario)  # → dict
-
-```
+### ¿Cómo sucede la creación de un diccionario en el Heap?
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Quiz II
+### 🌀 Comprendiendo la instrucción de asignación 🌀
 
-- ¿Cuáles son las llaves en el siguiente diccionario?
-
-```Python
-directorio = {'Juan':123, 'Diana':643, 'Juliana':189}
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz II - Solución
-
-```Python
-'Juan'
-
-'Diana'
-
-'Juliana'
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz III
-
-- ¿Cuál es el valor asignado a la llave 'Diana'?
-
-```Python
-directorio = {'Juan':123, 'Diana':643, 'Juliana':189}
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz III - Solución
-
-```Python
-643
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo se accede a un valor por llave en un diccionario?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Diccionarios - Acceso por llave
-
-- Dado el siguiente diccionario:
-
-```Python
-directorio = {'Juan':123, 'Diana':643, 'Juliana':189}
+En este código:
+```python
+PI = 3.14
+pi = PI
+numero_pi
 ```
 
-- Así se puede acceder a los valores
-	- Por llave:
 
-```Python
-directorio['Juan']  # → 123
+- Hay un solo objeto
+	- Que reside en el heap
+- La ubicación en donde se almacena el objeto
+	- Tiene múltiples nombres
+		- Es decir, se **referencia** por múltiples variables
+- Todas esas variables
+	- Residen en el Stack
 
-directorio['Diana']  # → 643
-
-directorio['Juliana']  # → 189
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz IV
-
-- Usted obtuvo acceso al siguiente diccionario
-- El cual contiene contraseñas de usuarios
-
-```Python
-claves = {
-		  'John':'IP_rules', 
-
-          'Paul':'no_se_duerma',
-
-          'Juliana':'n2_es_trivial_comparado_con_n3'
-          }
-```
-
-- ¿Cómo podría obtener la contraseña de la usuaria: "Juliana"?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz IV - Solución
-
-```Python
-claves['Juliana']  # → n2_es_trivial_comparado_con_n3
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Los diccionarios son mutables
-
-- Después de su creación
-	- Los diccionarios se pueden cambiar
-- Se pueden actualizar, agregar y eliminar 
-	- Las parejas llave-valor
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Los diccionarios son mutables - Ejemplo (I)
-
-```Python
-dct = {'a':1, 'b':9}
-```
-
-<img src="iph/n2/img/dic_3.png" alt="" style="object-fit: scale-down">
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Los diccionarios son mutables - Ejemplo (II)
-
-```Python[2]
-dct = {'a':1, 'b':9}
-dct['b'] = 2  # Actualiza el valor de la llave 'b'  
-```
-
-<img src="iph/n2/img/dic_4.png" alt="" style="object-fit: scale-down">
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo agregar una nueva pareja `llave-valor`  en un diccionario?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Diccionarios - Agregar pareja `llave-valor`
-
-- Dado el siguiente diccionario:
-
-```Python
-directorio = {'Juan':123, 'Diana':643}
-```
-
-- Así se puede agregar un nuevo par llave-valor:
-
-```Python
-directorio['Juliana'] = 189 
-```
-
-```Python
-print(directorio) 
-# → {'Juan': 123, 'Diana': 643, 'Juliana': 189}
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Los diccionarios son mutables - Ejemplo (III)
-
-```Python[4,5]
-dct = {'a':1, 'b':9}
-dct['b'] = 2
-
-# Agrega un par llave-valor:
-dct['c'] = 3  # → dct = {'a': 1, 'b': 2, 'c': 3}:
-```
-
-<img src="iph/n2/img/dic_5.png" alt="" style="object-fit: scale-down">
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz V
-
-- Resuelva el TODO:
-
-```Python
-edades = {}
-edades['Carlos'] = 22
-edades['Andrea'] = 30
-
-# TODO: Agregue una tercera pareja llave-valor 
-        # Al diccionario `edades`, 
-        # Usando su primer nombre como llave y 
-        # Su edad como valor
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz V - Solución
-
-
-```Python
-edades = {}
-edades['Carlos'] = 22
-edades['Andrea'] = 30
-
-# TODO - DONE: 
-edades['Ejemplo'] = 99
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz VI
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-
-```Python
-edades = {}
-edades['Ana'] = 19
-edades['Brad'] = 20
-edades['Lyu'] = 21
-print(edades)
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz VII - Solución
-
-```Python
-edades = {}
-edades['Ana'] = 19
-edades['Brad'] = 20
-edades['Lyu'] = 21
-print(edades)  # → {'Ana': 19, 'Brad': 20, 'Lyu': 21}
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz VIII
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-- Tip: 
-	- `chr()` retorna el carácter
-		- Que corresponde a un valor Unicode
-
-```Python
-dc = {}
-dc['A'] = 65  # 65 es el Unicode de: 'A'
-dc['B'] = 66  # 66 es el Unicode de: 'B'
-
-print(chr(dc['A']))
-print(chr(dc['B']))
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz VIII - Solución
-
-```Python
-dc = {}
-dc['A'] = 65  # 65 es el Unicode de: 'A'
-dc['B'] = 66  # 66 es el Unicode de: 'B'
-
-print(chr(dc['A']))  # → A
-print(chr(dc['B']))  # → B
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz IX
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-- Tip: 
-	- `ord()` retorna el Unicode
-		- Que corresponde a un carácter
-
-```Python
-unicode_map = {
-    'Ñ': ord('Ñ'),  # ord('Ñ') → 209
-    'Z': ord('Z')  # ord('Z') → 90
-}
-
-print(f"'Ñ' es: {unicode_map['Ñ']}")
-print(f"'Z' es: {unicode_map['Z']}")
-
-print(f"{unicode_map['Ñ']} es: {chr(unicode_map['Ñ'])}")
-print(f"{unicode_map['Z']} es: {chr(unicode_map['Z'])}")
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz IX - Solución
-
-```Python
-unicode_map = {
-    'Ñ': ord('Ñ'),  # ord('Ñ') → 209
-    'Z': ord('Z')  # ord('Z') → 90
-}
-
-print(f"'Ñ' es: {unicode_map['Ñ']}")  # → 'Ñ' es: 209
-print(f"'Z' es: {unicode_map['Z']}")  # → 'Z' es: 90
-
-print(f"{unicode_map['Ñ']} es: {chr(unicode_map['Ñ'])}")
-# → 209 es: Ñ
-print(f"{unicode_map['Z']} es: {chr(unicode_map['Z'])}")
-# → 90 es: Z
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿Cómo actualizar una pareja `llave-valor` en un diccionario?
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Diccionarios - Actualizar `valor`
-
-Dado el siguiente diccionario:
-```Python
-directorio = {'Juan':123, 'Diana':643}
-
-print(directorio) 
-# → {'Juan': 123, 'Diana': 643}
-```
-
-- Así se puede actualizar un par llave-valor
-	- Dada una llave existente:
-
-```Python
-# Modifica el valor de la llave 'Diana' por 777:
-directorio['Diana'] = 777 
-
-print(directorio) 
-# → {'Juan': 123, 'Diana': 777}
-
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz X
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-
-```Python
-precios = {'Pan':200, 'Leche':15_000, 'Huevos':21_000}
-precios['Pan'] = 2200  
-print(precios)
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz X - Solución
-
-```Python
-precios = {'Pan':200, 'Leche':15_000, 'Huevos':21_000}
-precios['Pan'] = 2200  
-print(precios)  
-# → {'Pan':2200, 'Leche':15000, 'Huevos':21000}
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XI
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-
-```Python
-precios = {'Pan':2200, 'Leche':15_000, 'Huevos':21_000}
-precios['Cafe'] = 17_000
-precios['Leche'] = 25_000
-print(precios)
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XI - Solución
-
-```Python
-precios = {'Pan':2200, 'Leche':15_000, 'Huevos':21_000}
-precios['Cafe'] = 17_000
-precios['Leche'] = 25_000
-print(precios)  
-# → {'Pan': 2200, 'Leche': 25000, 'Huevos': 21000, 'Cafe': 17000}
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XII
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-
-```Python
-precios = {'Pan':2200, 'Leche':15_000, \
-           'Arepa':21_000,'Cafe':17_000 }
-print(precios['Cafe'])
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XII - Solución
-
-```Python
-precios = {'Pan':2200, 'Leche':15_000, \
-           'Arepa':21_000,'Cafe':17_000 }
-print(precios['Cafe'])  # → 17000
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XIII
-
-- ¿Cuál es el resultado de ejecutar el siguiente código?
-
-```Python
-precios = {'Pan':2200, 'Leche':15_000, \
-           'Arepa':21_000,'Cafe':17_000 }
-print(precios['Huevos'])
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XIII - Solución
-
-```Python
-Traceback (most recent call last):
-  Cell In[...], line …
-    print(precios['Huevos'])
-KeyError: 'Huevos'
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### ¿`KeyError`?
-
-<a href="https://eerosales24.github.io/iph_2025_20/general/errores_comunes/#/25" target="_blank" rel="noopener noreferrer">KeyError</a>
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### `dict` es una clase
-    
-- Una *clase* específica comportamientos de objetos
-- No es el objetivo del curso usar clases
-- Basta con saber que
-	- `dict` es el "molde" 
-		- Para crear diccionarios
-- Esto objetos tienen comportamientos
-	-  Implementados vía *métodos*
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-###  `dict.get()`
-
-- Recupera un valor para una llave dada
-- Sintaxis: 
-```Python
-dict.get(llave, valor_predeterminado)
-```
-- `llave`: Llave para recuperar valor
-- `valor_predeterminado`: Valor a retornar 
-- Si no se encuentra la llave (opcional: `None`)
-- Retorna el valor para la llave si está presente
-	- Caso contrario: `valor_predeterminado`
-- Usar `dict.get(...)` para evitar `KeyError`
-- Ayuda:  [dict](https://docs.python.org/3/library/stdtypes.html#dict.get)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-###  `dict.get()` - Ejemplos
-
-```Python
-{'manzana':1, 'banana':2}.get('manzana')  # → 1
-
-{'manzana':1, 'banana':2}.get('cereza')  # → None
-
-{'manzana':1, 'banana':2}.get('cereza', 0)  # → 0 
-
-{'PERA':5, 'GUAYABA':12}.get('pera', 'N/A')  # → 'N/A'
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XIV
-
-- ¿Cuál es el resultado de ejecutar el siguiente código si el usuario ingresa: `Fresa`?
-
-```Python
-precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
-                 'Papaya': 5600, 'Naranja': 8700}
-
-fruta_buscada = input("Digite la fruta de la " \
-                      "cual quiere conocer el precio: ")
-precio = precio_frutas.get(fruta_buscada)
-
-if precio is not None:
-    print(f"El precio de la {fruta_buscada} " \
-          f"es: {precio}.")
-else:
-    print(f"El precio de la {fruta_buscada} " \
-          f"no está disponible.")
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XIV - Solución
-
-
-```Python
-precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
-                 'Papaya': 5600, 'Naranja': 8700}
-
-fruta_buscada = input("Digite la fruta de la " \
-                      "cual quiere conocer el precio: ")
-precio = precio_frutas.get(fruta_buscada)
-
-if precio is not None:
-    print(f"El precio de la {fruta_buscada} " \
-          f"es: {precio}.")  
-    # → El precio de la Fresa es: 12000.
-else:
-    print(f"El precio de la {fruta_buscada} " \
-          f"no está disponible.")
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XV
-
-- ¿Cuál es el resultado de ejecutar el siguiente código si el usuario ingresa: `Granadilla`?
-
-```Python
-precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
-                 'Papaya': 5600, 'Naranja': 8700}
-
-fruta_buscada = input("Digite la fruta de la " \
-                      "cual quiere conocer el precio: ")
-precio = precio_frutas.get(fruta_buscada)
-
-if precio is not None:
-    print(f"El precio de la {fruta_buscada} " \
-          f"es: {precio}.")
-else:
-    print(f"El precio de la {fruta_buscada} " \
-          f"no está disponible.")
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XV - Solución
-
-```Python
-precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
-                 'Papaya': 5600, 'Naranja': 8700}
-
-fruta_buscada = input("Digite la fruta de la " \
-                      "cual quiere conocer el precio: ")
-precio = precio_frutas.get(fruta_buscada)
-
-if precio is not None:
-    print(f"El precio de la {fruta_buscada} " \
-          f"es: {precio}.")
-else:
-    print(f"El precio de la {fruta_buscada} " \
-          f"no está disponible.")
-    # → El precio de la Granadilla no está disponible.
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XVI
-
-- ¿Cuál es el resultado de ejecutar el siguiente código si el usuario ingresa: `Granadilla`?
-
-```Python
-precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
-                 'Papaya': 5600, 'Naranja': 8700}
-
-fruta_buscada = input("Digite la fruta de la" \
-                      "cual quiere conocer el precio: ")
-precio = precio_frutas.get(fruta_buscada, -1)
-
-if precio != -1:
-    print(f"El precio de la {fruta_buscada} " \
-          f"es: {precio}.")
-else:
-    print(f"El precio de la {fruta_buscada} " \
-          f"no está disponible.")
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Quiz XVI - Solución
-
-```Python
-precio_frutas = {'Manzana': 9000, 'Fresa': 12000, \
-                 'Papaya': 5600, 'Naranja': 8700}
-
-fruta_buscada = input("Digite la fruta de la" \
-                      "cual quiere conocer el precio: ")
-precio = precio_frutas.get(fruta_buscada, -1)
-
-if precio != -1:
-    print(f"El precio de la {fruta_buscada} " \
-          f"es: {precio}.")
-else:
-    print(f"El precio de la {fruta_buscada} " \
-          f"no está disponible.")
-    # → El precio de la Granadilla no está disponible.
-```
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<i class="fas fa-question-circle fa-2x fa-spin fa-4x"></i>
 
 <br>
+<img src="iph/n1/img/promedio_2.png" alt="" style="width: 44%; height: 25%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendiendo la creación de un diccionario vacío
+
+En este código:
+```python
+enteros = {}
+```
+
+- Se crea un diccionario vacío
+	- Reside **como un objeto en el Heap**
+- La variable `enteros`:
+	- Apunta a ese diccionario vacío
+		- Es solo un nombre que se le da al diccionario
+			- **Reside en el Stack**
+
+<img src="iph/n2/img/dict_hs_1.png" alt="" style="width: 40%; height: 35%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendiendo la creación de un diccionario poblado (1/4)
+
+
+Considere este código:
+```python
+enteros = {'x':1, 'y':2, 'z':3}  # Diccionario de enteros
+```
+
+- Imagine cómo se vería:
+	- El Heap
+	- El Stack
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### No haga trampa, imagine como se vería el Heap y el Stack
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendiendo la creación de un diccionario poblado (2/4)
+
+
+```python
+enteros = {'x':1, 'y':2, 'z':3}  # Diccionario de enteros
+```
+
+<br>
+
+- Así se podría representar el estado del Heap y el Stack:
+
+<img src="iph/n2/img/dict_hs_2.png" alt="" style="width: 60%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendiendo la creación de un diccionario poblado (3/4)
+
+
+```python
+enteros = {'x':1, 'y':2, 'z':3}  # Diccionario de enteros
+```
+
+- Las **llaves** del diccionario
+	- Son solo **referencias a inmutables**
+		- En este caso a 3 strings
+
+<img src="iph/n2/img/dict_hs_3.png" alt="" style="width: 20%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendiendo la creación de un diccionario poblado (4/4)
+
+
+```python
+enteros = {'x':1, 'y':2, 'z':3}  # Diccionario de enteros
+```
+
+- Los **valores** del diccionario
+	- Son solo **referencias a objetos** (pueden ser mutables o inmutables)
+		- En este caso a 3 enteros
+
+<img src="iph/n2/img/dict_hs_4.png" alt="" style="width: 20%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Comprendamos el paso de argumentos
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de datos inmutables
+
+- Un tipo de dato es inmutable
+	- Si después de crearlo, **no se puede cambiar**
+- Tipos de datos inmutables vistos hasta ahora:
+	- `int`
+	- `float`
+	- `str`
+	- `bool`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (1/10)
+
+```Python
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+- Un inmutable: 
+	- **No puede ser cambiado** dentro de una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (2/10)
+
+```Python
+mensaje_original = 'Original'
+```
+
+<img src="iph/n2/img/ej_i_1.png" alt="" style="width: 45%; height: 35%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (3/10)
+
+```Python[1]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+<img src="iph/n2/img/ej_i_2.png" alt="" style="width: 20%; height: 12%; object-fit: fill">
+
+
+
+- La variable: `original`
+	- Hace referencia a la ubicación en memoria
+		- En donde reside un objeto de:
+			- Tipo: `str`
+			- Valor: `'Original'`
+			- Identidad: Representada por el color amarillo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (4/10)
+
+```Python[9]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+- Se invoca a la función `intentar_modificar()`
+	- Esta invocación **crea una nueva entrada en el Stack**
+		- Un nuevo _"Frame"_
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (5/10)
+
+```Python[9,3]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+
+<img src="iph/n2/img/ej_i_3.png" alt="" style="width: 50%; height: 40%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (6/10)
+
+```Python[3, 4]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+<img src="iph/n2/img/ej_i_4.png" alt="" style="width: 20%; height: 12%; object-fit: fill">
+
+
+- La variable local: `mensaje`
+	- Hace referencia a la ubicación en memoria
+		- En donde reside un objeto de:
+			- Tipo: `str`
+			- Valor: `'Original'`
+			- Identidad: Representada por el color amarillo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (7/10)
+
+
+```Python[5]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+<img src="iph/n2/img/ej_i_5.png" alt="" style="width: 50%; height: 40%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (8/10)
+
+
+```Python[5, 6]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+...
+```
+
+<img src="iph/n2/img/ej_i_5.png" alt="" style="width: 40%; height: 30%; object-fit: fill">
+
+
+- La variable local: `mensaje`
+	- **Ahora hace referencia a otra ubicación en memoria**
+		- En donde reside un objeto de:
+			- Tipo: `str`
+			- Valor: `'Nuevo'`
+			- Identidad: Representada por el color azul
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (9/10)
+
+
+```Python[9]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+- Cuando la función `intentar_modificar()` termina de ejecutarse
+	- Su información desaparece del Stack
+
+<img src="iph/n2/img/ej_i_2.png" alt="" style="width: 35%; height: 20%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos inmutables  - Ejemplo (10/10)
+
+
+```Python[1, 10]
+original = 'Original'
+
+def intentar_modificar(mensaje: str) -> None:
+    print(mensaje)  # → 'Original'
+    mensaje = 'Nuevo'
+    print(mensaje)  # → 'Nuevo'
+
+print(original)  # → Original
+intentar_modificar(original)
+print(original)  # → Original
+```
+
+
+<img src="iph/n2/img/ej_i_2.png" alt="" style="width: 15%; height: 10%; object-fit: fill">
+
+
+- La variable: `original`
+	- Hace referencia a la ubicación en memoria
+		- En donde reside un objeto de:
+			- Tipo: `str`
+			- Valor: `'Original'`
+			- Identidad: Representada por el color amarillo
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### En resumen
+
+- Un inmutable: 
+	- **No puede ser cambiado** dentro de una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Tipos de datos mutables
+
+- Un tipo de dato es mutable
+	- Si después de crearlo, **se puede cambiar**
+- Tipos de datos mutables vistos hasta ahora:
+	- `dict`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (1/10)
+
+```Python
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (2/10)
+
+```Python
+dct = {'x': 1}
+```
+
+<img src="iph/n2/img/ej_m_1.png" alt="" style="width: 50%; height: 40%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (3/10)
+
+```Python
+dct = {'x': 1}
+```
+
+<img src="iph/n2/img/ej_m_1.png" alt="" style="width: 25%; height: 20%; object-fit: fill">
+
+
+
+- La variable local: `dct`
+	- Hace referencia a la ubicación en memoria
+		- En donde reside un objeto de:
+			- Tipo: `dict`
+			- Valor: Referencias a:
+				- keys: `x` (Tipo: `str`, Valor: `'x'`, Identidad: Amarillo)
+				- values: 1 (Tipo: `int`, Valor: `'1'`, Identidad: Verde)
+			- Identidad: Representada por el color azul
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (4/10)
+
+```Python[1,8]
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777}
+```
+
+<img src="iph/n2/img/ej_m_1.png" alt="" style="width: 35%; height: 30%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (5/10)
+
+```Python[9,3]
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777}
+```
+
+<img src="iph/n2/img/ej_m_2.png" alt="" style="width: 55%; height: 45%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (6/10)
+
+```Python[3,4]
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777}
+```
+
+<img src="iph/n2/img/ej_m_2.png" alt="" style="width: 45%; height: 40%; object-fit: fill">
+
+
+- La variable local: `diccionario`
+	- Hace referencia a la ubicación en memoria
+		- En donde reside el diccionario
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (7/10)
+
+```Python[5]
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777}
+```
+
+<img src="iph/n2/img/ej_m_3.png" alt="" style="width: 55%; height: 50%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (8/10)
+
+```Python[5, 6]
+...
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+...
+```
+
+<img src="iph/n2/img/ej_m_3.png" alt="" style="width: 23%; height: 17%; object-fit: fill">
+
+
+- **El diccionario fue cambiado**
+	- El valor (de la única pareja llave-valor que contiene)
+		- Ahora referencia a una ubicación de memoria
+			- En donde reside un objeto de: 
+				- Tipo: `int`
+				- Valor: `-777`
+				- Identidad: Representada por el color naranja
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (9/10)
+
+
+```Python[9]
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777
+```
+
+<img src="iph/n2/img/ej_m_4.png" alt="" style="width: 45%; height: 35%; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Paso de argumentos mutables - Ejemplo (10/10)
+
+
+```Python[9, 10]
+dct = {'x': 1}
+
+def modificar_diccionario(diccionario: dict) -> None:
+    print(diccionario)  # → {'x': 1}
+    diccionario['x'] = -777
+    print(diccionario)  # → {'x': -777}
+
+print(dct)  # → {'x': 1}
+modificar_diccionario(dct)  
+print(dct)  # → {'x': -777
+```
+
+<img src="iph/n2/img/ej_m_4.png" alt="" style="width: 30%; height: 25%; object-fit: fill">
+
+
+- Cuando la función `modificar_diccionario()` termina de ejecutarse
+	- Su información desaparece del Stack
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### En resumen
+
+- Un inmutable: 
+	- **No puede ser cambiado** dentro de una función
+- Un mutable:
+	- **Puede ser cambiado** por una función
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (1/4)
+
+- **Mentalmente** resuelva la siguiente pregunta:
+	- ¿Cuál sería el resultado de ejecutar el siguiente código?
+
+```python
+# Diccionario con un inventario de productos en una tienda
+inventario_tienda = {
+    "manzanas": {"cantidad": 50, "precio_unitario": 0.5},
+    "bananas": {"cantidad": 100, "precio_unitario": 0.3},
+    "naranjas": {"cantidad": 75, "precio_unitario": 0.6}
+}
+
+def actualizar_inventario(inventario: dict, producto: str, cantidad_vendida: int) -> None:
+    """
+    Modifica el inventario reduciendo la cantidad disponible de un producto.
+
+    Args:
+        inventario (dict): Diccionario que representa el inventario de productos.
+        producto (str): Nombre del producto cuya cantidad se actualizará.
+        cantidad_vendida (int): Número de unidades vendidas.
+    """
+    print(f"2. Inventario justo antes de la venta:\n{inventario}\n")
+
+    if producto in inventario:
+        inventario[producto]["cantidad"] -= cantidad_vendida
+        print(f"3. Se vendieron {cantidad_vendida} unidades de {producto}.\n")
+
+    print(f"4. Inventario justo después de la venta:\n {inventario}\n")
+
+
+print(f"1. Inventario inicial:\n{inventario_tienda}\n")
+actualizar_inventario(inventario_tienda, "manzanas", 20)
+print(f"5. Inventario final:\n{inventario_tienda}")
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (2/4)
+
+- Copie y pegue el anterior código en Spyder y ejecútelo
+	- Revise si su respuesta mental fue correcta
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (3/4)
+
+- **Mentalmente** resuelva la siguiente pregunta:
+	- ¿Cuál sería el resultado de ejecutar el siguiente código?
+
+```python
+# Representa el identificador de un pedido en una tienda en línea
+id_pedido = "ORD123456"
+
+def procesar_pedido(id_transaccion: str) -> None:
+    """
+    Simula el procesamiento de un pedido en una tienda en línea.
+    Intenta modificar el identificador del pedido, pero como las cadenas son inmutables,
+    el cambio no afecta la variable original fuera de la función.
+
+    Args:
+        id_transaccion (str): Identificador único del pedido.
+    """
+    print(f"-ID del pedido recibido en la función: {id_transaccion}\n")
+    id_transaccion = "ORD-PROCESADO"
+    print(f"-Nuevo ID dentro de la función (solo variable local): {id_transaccion}\n")
+
+print(f"-ID del pedido antes de procesar: {id_pedido}\n")
+procesar_pedido(id_pedido)
+print(f"-ID del pedido después de procesar: {id_pedido}\n")
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad I (4/4)
+
+- Copie y pegue el anterior código en Spyder y ejecútelo
+	- Revise si su respuesta mental fue correcta
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Recuerde: Siempre puede dibujar el estado del Stack y del Heap, para comprender mejor el paso de argumentos mutables/inmutables
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Fin de la Actividad 1
+
+- No es necesario hacer ningún envío de esta actividad
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Fin de N2-L3
+
+- No es necesario hacer ningún envío de este laboratorio
+	- No olvidé guardar sus avances en N2-PROY
+		- Los cuales puede enviar a Bloque Neón
+			- Puede hacer envíos _ilimitados_
+				- Solo el **último envío**  será calificado
+
+
 <br>
 
  [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_20/#)
