@@ -99,18 +99,63 @@ Universidad de los Andes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Instrucciones generales
+### Objetivos
 
-- **Objetivos**
-	- Afianzar la comprensión de los conceptos de mutabilidad e inmutabilidad
-	- Afianzar la comprensión de la mutabilidad de los diccionarios
+
+- Afianzar la comprensión de los conceptos de mutabilidad e inmutabilidad
+
+	<br>
+
+- Afianzar la comprensión de la mutabilidad de los diccionarios
 	
+	<br>
+
+- Comprender las aserciones en Python
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Siga paso a paso las siguientes instrucciones
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Trabajo individual
+
+- Este laboratorio debe realizarse de forma
+	- **Completamente individual**<!-- .element: class="fragment highlight-red" -->
+
+	<br>
+
+- El tiempo para terminar el laboratorio es corto
+	- Se trata de un laboratorio más extenso
+- Por favor:
+	- Evite las distracciones
+	- Guarde **silencio**<!-- .element: class="fragment highlight-blue" -->
+
+	<br>
+
+- Si no termina el laboratorio
+	- Debe finalizarlo (**y comprenderlo**)<!-- .element: class="fragment highlight-green" --> 
+		- En las 5h
+			- De trabajo individual semanal
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Preguntas
+
+- En caso de dudas, por favor:
+
+<br> 
+
+1. Formule su pregunta de forma **muy clara y concisa**
+
 <br>
 
-- **¿Preguntas?**
-	- Formule su pregunta de forma **muy clara y concisa**
-		- Luego (**y solo luego de esto**)
-			- Levante la mano
+2. Luego (**y solo luego de esto**)
+	- Levante la mano
+
+<br>
+
+<i class="fas fa-question-circle fa-1x fa-spin fa-1x"></i> _Al plantearse correctamente la pregunta, la respuesta a veces se revela sola_
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -120,6 +165,10 @@ Universidad de los Andes
 	- Afianzar la comprensión de los diccionarios
 	- Afianzar la comprensión de la inmutabilidad
 	- Afianzar la comprensión de la mutabilidad de los diccionarios
+
+<br>
+
+- **Importante:**  Este tema será evaluado en el parcial 2
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
@@ -864,13 +913,421 @@ print(f"-ID del pedido después de procesar: {id_pedido}\n")
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+#  Actividad II
+
+- **Objetivos:**
+	- Comprender el concepto de aserción
+
+<br>
+
+- **Importante:**  Este tema es parte del proyecto y será evaluado en el parcial 2
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Repasemos cómo obtener un tipo de dato
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### 🌀 `type()` 🌀
+
+- Retorna el tipo de dato del objeto dado
+- Sintaxis:  
+```Python
+type(objeto)
+````
+- Ej:
+```Python
+type(3.2)  # → float
+type(17)  # → int
+type('Hola mundo')  # → str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Hay una función que obtiene el tipo de dato, de una forma más precisa
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  `isinstance()` 
+
+- Verifica si un objeto  tipo de dato
+    
+- Retorna:
+    
+    - `True`:  Si el objeto es de ese tipo
+        
+    - `False`:  Si no lo es
+
+- Sintaxis:
+```
+isinstance(objeto, tipo)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  `isinstance()`  - Ejemplos (1/2)
+
+
+```python
+isinstance(17, int)       # → True
+isinstance(3.2, float)    # → True
+isinstance('Hola', str)   # → True
+isinstance(17, float)     # → False
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  `isinstance()`  - Ejemplos (2/2)
+
+- También acepta múltiples tipos:
+
+```python
+isinstance(17, (int, float))   # → True
+isinstance(3.2, (int, float))  # → True
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### En IP Honores, debe preferirse a `isinstance()` para conocer el tipo de dato de un objeto (por sobre `type()`)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Aserciones en Python
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La instrucción `assert` (1/2)
+
+- Verifica una condición (dada como una expresión),
+	- Mostrando error si es falsa
+
+	<br>
+
+- Simplifica pruebas y depuración
+
+	<br>
+
+- **Garantiza que se respeten restricciones**
+	- Se usarán en Nivel 2 con este fin
+		- Solo para parámetros
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### La instrucción `assert` (2/2)
+    
+- Sintaxis:
+    
+    - `assert condition`
+        
+    - `assert condition, 'Error message'`
+
+	<br>
+
+- `assert`: Palabra clave para insertar aserciones
+- `condition`: Condición a evaluar (dada como una expresión)
+
+	<br>
+    
+- Si la condición es verdadera →  la ejecución **continúa normal**
+- Si es falsa →  `AssertionError` (con mensaje opcional)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `assert` - Ejemplos (1/2)
+
+- Aserción **sin** mensaje:
+
+```
+x = -1
+assert x > 0
+```
+
+<br>
+	
+- Resultado de ejecución:
+
+```python
+AssertionError                            Traceback (most recent call last)
+Cell In[90], line 2
+      1 x = -1
+----> 2 assert x > 0
+
+AssertionError: 
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `assert` - Ejemplos (2/2)
+
+- Aserción **con** mensaje:
+
+```
+x = -1
+assert x > 0, "Se esperaba un número positivo, pero x es igual a: " + str(x)
+```
+
+<br>
+
+- Resultado de ejecución:
+
+```python
+AssertionError                            Traceback (most recent call last)
+Cell In[89], line 2
+      1 x = -1
+----> 2 assert x > 0, "Se esperaba un número positivo, pero x es igual a: " + str(x)
+
+AssertionError: Se esperaba un número positivo, pero x es igual a: -1
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz I
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+    
+print(suma(2, 2))
+```
+
+
+<br>
+
+- **Respuesta**:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`4`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz II
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+
+    assert isinstance(primer_operando, int), "Se esperaba un primer parámetro \
+        del tipo entero, pero se recibió: " + str(primer_operando)
+        
+    assert isinstance(segundo_operando, int), "Se esperaba un segundo parámetro \
+        del tipo entero, pero se recibió: " + str(segundo_operando)
+        
+    return primer_operando + segundo_operando
+    
+print(suma(2, 2))
+```
+
+
+<br>
+
+- **Respuesta**:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`4`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz III
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+    
+print(suma("Hola", 2))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz III - Solución
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    return primer_operando + segundo_operando
+    
+print(suma("Hola", 2))
+```
+
+
+<br>
+
+- **Respuesta** :
+
+```
+...
+     10 def suma(primer_operando: int, segundo_operando: int) -> int:
+---> 11     return primer_operando + segundo_operando
+
+TypeError: can only concatenate str (not "int") to str
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz IV
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+
+    assert isinstance(primer_operando, int), "Se esperaba un primer parámetro \
+        del tipo entero, pero se recibió: " + str(primer_operando)
+        
+    assert isinstance(segundo_operando, int), "Se esperaba un segundo parámetro \
+        del tipo entero, pero se recibió: " + str(segundo_operando)
+        
+    return primer_operando + segundo_operando
+    
+print(suma("Hola", 2))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz IV - Solución
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    assert isinstance(primer_operando, int), "Se esperaba un primer parámetro \
+        del tipo entero, pero se recibió: " + str(primer_operando)
+    assert isinstance(segundo_operando, int), "Se esperaba un segundo parámetro \
+        del tipo entero, pero se recibió: " + str(segundo_operando)
+    return primer_operando + segundo_operando
+    
+print(suma("Hola", 2))
+```
+
+
+<br>
+
+- **Respuesta**:
+
+```python
+     10 def suma(primer_operando: int, segundo_operando: int) -> int:
+---> 11     return primer_operando + segundo_operando
+
+AssertionError: Se esperaba un primer parámetro del tipo entero, pero se recibió:
+Hola
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz V
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+
+    assert isinstance(primer_operando, int), "Se esperaba un primer parámetro \
+        del tipo entero, pero se recibió: " + str(primer_operando)
+        
+    assert isinstance(segundo_operando, int), "Se esperaba un segundo parámetro \
+        del tipo entero, pero se recibió: " + str(segundo_operando)
+        
+    return primer_operando + segundo_operando
+    
+print(suma(2, "Mundo"))
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz V - Solución
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+    assert isinstance(primer_operando, int), "Se esperaba un primer parámetro \
+        del tipo entero, pero se recibió: " + str(primer_operando)
+    assert isinstance(segundo_operando, int), "Se esperaba un segundo parámetro \
+        del tipo entero, pero se recibió: " + str(segundo_operando)
+    return primer_operando + segundo_operando
+    
+print(suma(2, "Mundo"))
+```
+
+
+<br>
+
+- **Respuesta**:
+
+
+```
+     10 def suma(primer_operando: int, segundo_operando: int) -> int:
+     11     return primer_operando + segundo_operando
+---> 13 print(suma("Hola", 2))
+
+AssertionError: Se esperaba un segundo parámetro del tipo entero, pero se recibió:
+Mundo
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Quiz VI
+
+- ¿Cuál es el resultado de ejecutar el siguiente código?
+
+```Python
+def suma(primer_operando: int, segundo_operando: int) -> int:
+
+    assert isinstance(primer_operando, int), "Se esperaba un primer parámetro \
+        del tipo entero, pero se recibió: " + str(primer_operando)
+        
+    assert isinstance(segundo_operando, int), "Se esperaba un segundo parámetro \
+        del tipo entero, pero se recibió: " + str(segundo_operando)
+        
+    return primer_operando + segundo_operando
+    
+print(suma(7, 7))
+```
+
+
+<br>
+
+- **Respuesta**:
+	- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->`14`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Fin de la Actividad 2
+
+- No es necesario hacer ningún envío de esta actividad
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Ahora ya conoce todo lo que necesita para terminar N2-PROY :)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### N2-PROY
+- De manera **INDIVIDUAL**
+	- Trabaje en N2-PROY
+
+<br>
+
+- **IMPORTANTE**:
+	- Los monitores y el profesor:
+		- NO RESUELVEN EL PROYECTO
+		- NO CREAN DOCTESTS
+		- NO RESUELVEN ERRORES EN EL PROYECTO
+	- En caso de dudas conceptuales sobre N2-PROY 
+		- Formule su pregunta de forma **muy clara y concisa**
+			- Luego (**y solo luego de esto**)
+				- Levante la mano
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 # Fin de N2-L3
 
 - No es necesario hacer ningún envío de este laboratorio
-	- No olvidé guardar sus avances en N2-PROY
+	- No olvidé guardar sus avances de N2-PROY
 		- Los cuales puede enviar a Bloque Neón
 			- Puede hacer envíos _ilimitados_
-				- Solo el **último envío**  será calificado
+				- Solo el **último envío**  será revisado
 
 
 <br>
