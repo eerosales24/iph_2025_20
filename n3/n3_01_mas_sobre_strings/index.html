@@ -847,11 +847,194 @@ print(frase_corregida)
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Para cerrar
+### Nuevas prácticas
 
 - Revise las siguientes buenas prácticas:
 	- <a href="https://eerosales24.github.io/iph_2025_20/general/buenas_practicas/#/44" target="_blank" rel="noopener noreferrer">BP-22: Uso seguro de min() y max()</a>
 	- <a href="https://eerosales24.github.io/iph_2025_20/general/buenas_practicas/#/45" target="_blank" rel="noopener noreferrer">BP-23: Validaciones seguras de métodos de str</a>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad  en Clase
+
+- El laboratorio de mañana, asume que usted terminó esta actividad
+	- Por lo tanto, por favor:
+		- Trabaje en forma **individual** y en **silencio**
+
+	<br> 
+
+- Envíe su entregable
+	- Tal y como se indica al final de la actividad
+		- Tiene intentos ilimitados de envío
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#  Actividad  en Clase
+
+- **Objetivos:**
+	- Afianzar la comprensión de los métodos de los strings
+	- Afianzar la compresión del uso de indexamiento y slicing en strings
+	- Afianzar la comprensión de f-strings
+	- Comprender parámetros opcionales
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad en Clase (1/4)
+
+- Cree un archivo llamado: `logica.py`
+	- Copie y pegue el siguiente código e implemente el `TODO1`:
+
+```python
+import doctest
+
+def es_palindrome_basico(cadena: str) -> bool:
+    """
+    Verifica si un string (sin espacios) es un palíndromo, esto es, 
+    si se lee igual en ambos sentidos.
+
+    Args:
+        cadena (str): La palabra o frase de entrada a verificar (sin espacios).
+
+    Returns:
+        bool: True si el string es un palíndromo, False en caso contrario.
+
+    >>> es_palindrome_basico('Wow')  # Caso no es palíndromo (mayúscula inicial)
+    False
+    >>> es_palindrome_basico('wow')  # Caso es palíndromo
+    True
+    >>> es_palindrome_basico('12321')  # Caso es palíndromo (número)
+    True
+    >>> es_palindrome_basico('1234')  # Caso no es palíndromo (número)
+    False
+    """
+    # TODO1: Implemente la función tal y como se describe en la documentación
+
+#doctest.run_docstring_examples(es_palindrome_basico, globals(), verbose=True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad en Clase (2/4)
+
+- En `logica.py`
+	- Copie y pegue el siguiente código e implemente el `TODO2`:
+
+```python
+def es_palindrome_ignora_mayusculas(cadena: str) -> bool:
+    """
+    Verifica si un string (sin espacios) es un palíndromo, esto es, 
+    si se lee igual en ambos sentidos, ignorando diferencias entre mayúsculas y
+    minúsculas.
+
+    Args:
+        cadena (str): La palabra o frase de entrada a verificar.
+
+    Returns:
+        bool: True si el string es un palíndromo, False en caso contrario.
+
+    >>> es_palindrome_ignora_mayusculas('Wow')  # Caso es palíndromo (ignora mayúscula inicial)
+    True
+    >>> es_palindrome_ignora_mayusculas('wow')  # Caso es palíndromo
+    True
+    >>> es_palindrome_ignora_mayusculas('12321')  # Caso es palíndromo (número)
+    True
+    >>> es_palindrome_ignora_mayusculas('1234')  # Caso no es palíndromo (número)
+    False
+    """
+    # TODO2: Implemente la función tal y como se describe en la documentación
+
+#doctest.run_docstring_examples(es_palindrome_ignora_mayusculas, globals(), verbose=True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetro opcional en Python
+
+-  Aquel que tiene un **valor por defecto** asignado en la definición de una función
+    
+- Su sintaxis es:
+```python
+def funcion(parámetro=valor_por_defecto):
+```
+    
+- Si **no se proporciona** ese argumento al llamar la función
+	- Se usará el **valor por defecto**
+    
+- Si **se proporciona**
+	- El valor dado **sobrescribe** el valor por defecto
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Parámetro opcional en Python - Ejemplo
+
+```python
+def es_palindrome_3(cadena: str, sensible_mayusculas: bool=False) -> bool:
+```
+
+- `sensible_mayusculas` 
+	- Es un **parámetro opcional**
+    
+- Por defecto, su valor es `False`
+	- Es decir, **no distingue entre mayúsculas y minúsculas**
+    
+- Si se quiere que sí distinga, se debe invocar así a la función:  
+
+```python
+es_palindrome_3("Oso", True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad en Clase (3/4)
+
+- En `logica.py`
+	- Copie y pegue el siguiente código e implemente el `TODO3`:
+
+```python
+def es_palindromo_configurable(cadena: str, sensible_mayusculas: bool=False) -> bool:
+    """
+    Verifica si un string es un palíndromo (sin espacios), esto es, si se lee
+    igual en ambos sentidos. Se puede especificar si la verificación es sensible
+    a mayúsculas y minúsculas.
+
+    Args:
+        cadena (str): La palabra o frase de entrada a verificar.
+        sensible_mayusculas (bool, opcional): Indica si la verificación debe ser
+        sensible a las mayúsculas y minúsculas. Por defecto: False.
+
+    Returns:
+        bool: True si el string es un palíndromo, False en caso contrario.
+
+    >>> es_palindromo_configurable('Wow', True)  # Caso no es palíndromo (no ignora mayúscula inicial)
+    False
+    >>> es_palindromo_configurable('Wow')  # Caso es palíndromo (ignora mayúscula inicial)
+    True
+    >>> es_palindromo_configurable('radar')  # Caso es palíndromo
+    True
+    >>> es_palindromo_configurable('Radar', True)  # Caso no es palíndromo (no ignora mayúscula inicial)
+    False
+    >>> es_palindromo_configurable('12321')  # Caso es palíndromo (número)
+    True
+    >>> es_palindromo_configurable('1234')  # Caso no es palíndromo (número)
+    False
+    """
+    # TODO3: Implemente la función tal y como se describe en la documentación
+
+#doctest.run_docstring_examples(es_palindromo_configurable, globals(), verbose=True)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+###  Actividad en Clase (4/4)
+
+1. Comprima en un archivo `.zip` el archivo:
+	- `logica.py`
+
+	<br>
+
+2. Haga el envío del `.zip` en  [Bloque Neón](https://bloqueneon.uniandes.edu.co/)
+	- Vaya a **"Actividades"**
+		- **"N3-L1"**
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
