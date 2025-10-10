@@ -330,7 +330,7 @@ def ocultar_usuario_email(email: str, caracteres_visibles: int=2) -> str:
         o el email sin modificar, cuando caracteres_visibles sea mayor o igual a
          la longitud del usuario.
 
-    >>> ocultar_usuario_email('ejemplo@dominio.com') # Caso oculta 2 caracteres (por defecto)
+    >>> ocultar_usuario_email('ejemplo@dominio.com') # Caso muestra 2 caracteres (por defecto)
     'ej*****@dominio.com'
     >>> ocultar_usuario_email('ejemplo@dominio.com', 4) # Caso oculta 4 caracteres (de 7)
     'ejem***@dominio.com'
