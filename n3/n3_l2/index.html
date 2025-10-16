@@ -444,17 +444,17 @@ def factorial_for(n: int) -> int:
     Returns:
         int: El factorial del número proporcionado.
 
-    >>> factorial_while(0)  # Caso 0
+    >>> factorial_for(0)  # Caso 0
     1
-    >>> factorial_while(1)  # Caso 1
+    >>> factorial_for(1)  # Caso 1
     1
-    >>> factorial_while(2)  # Caso 2
+    >>> factorial_for(2)  # Caso 2
     2
-    >>> factorial_while(3)  # Caso 3
+    >>> factorial_for(3)  # Caso 3
     6
-    >>> factorial_while(4)  # Caso 4
+    >>> factorial_for(4)  # Caso 4
     24
-    >>> factorial_while(5)  # Caso 5
+    >>> factorial_for(5)  # Caso 5
     120
     """
     # TODO6: Implemente la función tal y como se describe en la documentación
@@ -545,15 +545,15 @@ def fibonacci_for(n: int) -> int:
     Returns:
         int: El n-ésimo número de Fibonacci.
 
-    >>> fibonacci_while(0)  # Caso 0
+    >>> fibonacci_for(0)  # Caso 0
     0
-    >>> fibonacci_while(1)  # Caso 1
+    >>> fibonacci_for(1)  # Caso 1
     1
-    >>> fibonacci_while(2)  # Caso 2
+    >>> fibonacci_for(2)  # Caso 2
     1
-    >>> fibonacci_while(12)  # Caso 12
+    >>> fibonacci_for(12)  # Caso 12
     144
-    >>> fibonacci_while(24)  # Caso 24
+    >>> fibonacci_for(24)  # Caso 24
     46368
     """
     # TODO8: Implemente la función tal y como se describe en la documentación
@@ -576,6 +576,8 @@ def cifrado_espejo(texto: str) -> str:
     Convierte un texto en su 'espejo' dentro del rango ASCII imprimible (32–126).
     Nota: Debe usar for y la función ord() para
     obtener el código ASCII de cada carácter.
+    
+    Enlaces de ayuda:
     
     https://eerosales24.github.io/iph_2025_20/n2/n2_05_mas_operaciones_sobre_strings/#/8
     
@@ -603,6 +605,8 @@ def cifrado_espejo(texto: str) -> str:
     True
     """
     # TODO9: Implemente la función tal y como se describe en la documentación
+
+#doctest.run_docstring_examples(cifrado_espejo, globals(), verbose=True)
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
@@ -671,7 +675,7 @@ Si el código ASCII está entre **32 y 126** (caracteres imprimibles estándar):
 
 ###  Actividad I (10/10)
 
-1. Revise si sus funciones cumplen con [todas las buenas prácticas obligatorias del curso](https://eerosales24.github.io/iph_2025_10/general/buenas_practicas/)
+1. Revise si sus funciones cumplen con [todas las buenas prácticas obligatorias del curso](https://eerosales24.github.io/iph_2025_20/general/buenas_practicas/)
 	- Desde **BP-1 a BP-26**
 	<br>
 
