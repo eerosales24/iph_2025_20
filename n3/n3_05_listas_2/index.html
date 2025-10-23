@@ -1120,12 +1120,16 @@ print(words)
 ```Python
 words = ["apple", "orange", "banana", "kiwi"]
 words.sort()
+# Ordena alfabéticamente de A a Z:
 print(words)  # → ['apple', 'banana', 'kiwi', 'orange']
 
 words.sort(reverse=True)
+# Ordena alfabéticamente de Z a A:
 print(words)  # → ['orange', 'kiwi', 'banana', 'apple']
 
 words.sort(key=len)
+# Ordena por longitud (de menor a mayor)
+# Si hay empate, mantiene el orden original (orden estable):
 print(words)  # → ['kiwi', 'apple', 'orange', 'banana']
 ```
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
