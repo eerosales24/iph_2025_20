@@ -87,134 +87,294 @@
       <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### <i class="fas fa-award"></i> IP Honores  - Índice General
+### <i class="fas fa-award"></i> IP Honores
+
+ ####  *Patrones de Recorrido en Diccionarios*
+
+[Eduardo Rosales](mailto:ee.rosales24@uniandes.edu.co)
+
+Departamento de Ingeniería de Sistemas y Computación
+
+Universidad de los Andes
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrones de recorrido en diccionarios
+
+- [Por llaves](https://eerosales24.github.io/iph_2025_10/n3/n3_12_patrones_de_recorrido_en_diccionarios/#/12)
+
+- [Por valores](https://eerosales24.github.io/iph_2025_10/n3/n3_12_patrones_de_recorrido_en_diccionarios/#/15)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Breve repaso de diccionarios
+
+```Python
+edades = {}
+edades['Juan'] = 18  # edades = {'Juan':18}
+edades['Diana'] = 21  # edades = {'Juan':18, 'Diana' = 21}
+edades['Juliana'] = 45  # edades = {'Juan':18, 'Diana':21, 'Juliana':45}
+print(edades.get('Juan'))  # → 18
+print(edades.get('Eduardo'))  # → None
+print('Diana' not in edades)  # → False
+del edades['Diana']  # edades = {'Juan': 18, 'Juliana': 45}
+print(edades.pop('Juliana', None))  # → 45
+var = edades.pop('Eduardo', 21)  # var = 21
+edades['Juan'] = var  # edades = {'Juan': 21}
+edades['Z'] = -1  # edades = {'Juan': 21, 'Z': -1}
+print(edades)  # → {'Juan': 21, 'Z': -1}
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.keys()`
+
+- Retorna una vista de todas las **llaves**
+	- De un diccionario
+- Sintaxis: 
+```Python
+dict.keys()
+```
+- La vista generada es *dinámica*
+	- Refleja los cambios al diccionario
+- Ayuda: [dict.keys](https://docs.python.org/3/library/stdtypes.html#dict.keys)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.keys()` - Ejemplos (1/2)
+
+```Python
+diccionario = {} 
+keys = diccionario.keys()  # keys → dict_keys([])
+
+diccionario = {'a':1}
+keys = diccionario.keys()  # keys → dict_keys(['a'])
+
+diccionario = {'a':1, 'b':2, 'c':3}
+keys = diccionario.keys()  # keys → dict_keys(['a', 'b', 'c'])
+
+# Aquí se materializa la vista dinámica en una lista:
+key_list = list(keys)
+print(key_list)  # → ['a', 'b', 'c']
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.keys()` - Ejemplos (2/2)
+
+- Obtener una vista de todas las llaves:
+
+```Python
+diccionario = {'a':1, 'b':2}
+keys = diccionario.keys()  # keys → dict_keys(['a', 'b'])
+```
+
+- La vista refleja los cambios al diccionario :
+
+```Python
+diccionario['c'] =  3  # diccionario → {'a': 1, 'b': 2, 'c': 3}
+print(keys)  # dict_keys(['a', 'b', 'c'])
+```
+
+- La vista se puede materializar como una lista:
+
+```Python
+key_list = list(keys)
+print(key_list)  # → ['a', 'b', 'c']
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.values()`
+
+- Retorna una vista de todas los **valores**
+	- De un diccionario
+- Sintaxis: 
+```Python
+dict.values()
+```
+
+- La vista es *dinámica*
+	- Refleja los cambios al diccionario
+- Ayuda:  [dict.values](https://docs.python.org/3/library/stdtypes.html#dict.values)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.values()` - Ejemplos (1/2)
+
+```Python
+diccionario = {}
+values = diccionario.values()  # values → dict_values([])
+  
+diccionario = {'a':1}
+values = diccionario.values()  # values → dict_values([1])
+
+diccionario = {'a':1, 'b':2, 'c':3}
+values = diccionarioo.values()  # values → dict_values([1, 2, 3])
+
+# Aquí se materializa la vista dinámica en una lista:
+value_list = list(values)
+print(value_list)  # → [1, 2, 3]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### `dict.values()` - Ejemplos (2/2)
+
+- Obtener una vista de todos los valores:
+
+```Python
+diccionario = {'a':1, 'b':2}
+values = diccionario.values()  # values → dict_values([1, 2])
+```
+
+- La vista refleja los cambios al diccionario :
+
+```Python
+diccionario['c'] =  3  # diccionario → {'a': 1, 'b': 2, 'c': 3}
+print(values)  # dict_values([1, 2, 3])
+```
+
+- La vista se puede materializar como una lista:
+
+```Python
+value_list = list(values)
+print(value_list)  # → [1, 2, 3]
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="iph/n3/img/Screenshot 2024-10-20 at 7.55.08 PM 1.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="iph/n3/img/Screenshot 2024-10-20 at 7.58.03 PM.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrones de recorrido en diccionarios
+
+- Aunque los diccionarios no son secuencias
+	- Es posible recorrerlos
+- Hay dos formas de implementación:
+    - Recorrido por llaves
+    - Recorrido por valores
+- **Importante**:
+	- En Nivel 3 **NO** se usa `dict.items()`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de recorrido por llaves
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de recorrido por llaves - Con `for` y `dict.keys()`
+
+
+```Python
+for llave in dict.keys():
+    # Usar llave
+```
+
+-  Ej:
+
+```Python
+diccionario = {'a':1, 'b':2, 'c':3}
+for llave_actual in diccionario.keys():
+    print(llave_actual)
+```
+
+```Python
+a
+b
+c
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de recorrido por llaves - Con `for`
+
+```Python
+for llave_actual in dict:
+    # Usar llave
+```
+
+- Ej:
+
+```Python
+diccionario = {'a':1, 'b':2, 'c':3}
+for llave_actual in diccionario:
+    print(llave_actual)
+```
+
+```Python
+a
+b
+c
+```
+
+- ✅  Esta forma es más pythónica
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de recorrido por valores
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de recorrido por valores - Con `for`
+
+```Python
+for valor_actual in diccionario:
+    diccionario[valor_actual]
+```
+
+- Ej:
+
+```Python
+diccionario = {'a':1, 'b':2, 'c':3}
+for valor_actual in diccionario:
+    print(diccionario[valor_actual])
+```
+
+```Python
+1
+2
+3
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Patrón de recorrido por valores - Con `for` y `dict.values()`
+
+```Python
+for valor_actual in dict.values():
+    # Usar llave
+```
+
+- Ej:
+
+```Python
+diccionario = {'a':1, 'b':2, 'c':3}
+for valor_actual in diccionario.values():
+    print(valor_actual)
+```
+
+```Python
+1
+2
+3
+```
+
+✅  Esta forma es más pythónica
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<i class="fas fa-question-circle fa-2x fa-spin fa-4x"></i>
 
 <br>
-
-- Nivel 1:
-	- [Clases](https://eerosales24.github.io/iph_2025_20/#1/) | [Laboratorios](https://eerosales24.github.io/iph_2025_20/#3/)
-	
-- Nivel 2:
-	- [Clases](https://eerosales24.github.io/iph_2025_20/#4/) | [Laboratorios](https://eerosales24.github.io/iph_2025_20/#5/)
-	
-- **Nivel 3**:
-	- [Clases](https://eerosales24.github.io/iph_2025_20/#6/) | [Laboratorios](https://eerosales24.github.io/iph_2025_20/#7/)
-- Nivel 4:
-	- Clases | Laboratorios
-
 <br>
 
-- [Preguntas frecuentes](https://eerosales24.github.io/iph_2025_20/general/preguntas_frecuentes/#)
-- [Buenas prácticas](https://eerosales24.github.io/iph_2025_20/general/buenas_practicas/#/)
-- [Errores comunes](https://eerosales24.github.io/iph_2025_20/general/errores_comunes/#/)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 1 - Clases (1/2)
-
-
-- [Introducción](https://eerosales24.github.io/iph_2025_20/n1/n1_0_introduccion/#/)
-- [Conceptos fundamentales](https://eerosales24.github.io/iph_2025_20/n1/n1_01_conceptos_fundamentales/#/)
-- [Tipos de datos numéricos y operaciones](https://eerosales24.github.io/iph_2025_20/n1/n1_02_tipos_numericos_y_sus_operaciones_basicas/#/)
-- [Variables y la instrucción de asignación](https://eerosales24.github.io/iph_2025_20/n1/n1_03_variables_y_la_instruccion_de_asignacion/#/)
-- [Strings y operaciones](https://eerosales24.github.io/iph_2025_20/n1/n1_04_strings_y_sus_operaciones_basicas/#/)
-- [Conversión de tipos](https://eerosales24.github.io/iph_2025_20/n1/n1_05_conversion_de_tipos/#/)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 1 - Clases (2/2)
-
-- [Funciones I](https://eerosales24.github.io/iph_2025_20/n1/n1_06_funciones_1/#/)
-- [Funciones II](https://eerosales24.github.io/iph_2025_20/n1/n1_07_funciones_2/#/)
-- [Funciones III](https://eerosales24.github.io/iph_2025_20/n1/n1_08_funciones_3/#/)
-- [Metodología](https://eerosales24.github.io/iph_2025_20/n1/n1_09_metodologia/#/)
-- [Módulos e importación](https://eerosales24.github.io/iph_2025_20/n1/n1_10_modulos_e_importacion/#/)
-- [Separación entre la lógica y la interfaz](https://eerosales24.github.io/iph_2025_20/n1/n1_11_separacion_entre_logica_e_interfaz/#/)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 1 - Laboratorios
-
-- [N1-L1](https://eerosales24.github.io/iph_2025_20/n1/n1_l1/#/)
-- [N1-L2](https://eerosales24.github.io/iph_2025_20/n1/n1_l2/#/)
-- [N1-L3](https://eerosales24.github.io/iph_2025_20/n1/n1_l3/#/)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 2 - Clases (1/2)
-
-- [Booleanos y sus operaciones](https://eerosales24.github.io/iph_2025_20/n2/n2_01_booleanos_y_sus_operaciones/#/)
-- [Condicionales I](https://eerosales24.github.io/iph_2025_20/n2/n2_02_condicionales_1/#/)
-- [Condicionales II](https://eerosales24.github.io/iph_2025_20/n2/n2_03_condicionales_2/#/)
-- [Condicionales III](https://eerosales24.github.io/iph_2025_20/n2/n2_04_condicionales_3/#/)
-- [Más operaciones sobre strings](https://eerosales24.github.io/iph_2025_20/n2/n2_05_mas_operaciones_sobre_strings/#/)
-- [Diccionarios y operaciones básicas I](https://eerosales24.github.io/iph_2025_20/n2/n2_06_diccionarios_y_operaciones_basicas_1/#/)
-- [Diccionarios y operaciones básicas II](https://eerosales24.github.io/iph_2025_20/n2/n2_07_diccionarios_y_operaciones_basicas_2/#/)
-- [Diccionarios como estructuras de datos](https://eerosales24.github.io/iph_2025_20/n2/n2_08_diccionarios_como_estructuras_de_datos/#/)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 2 - Laboratorios
-
--  N2-L1
-	- Fue la Tarea de Spyder de N2
-		- Disponible en Bloque Neón
-
-- [N2-L2](https://eerosales24.github.io/iph_2025_20/n2/n2_l2/#/)
-
-	<br>
-
--  [N2-L3](https://eerosales24.github.io/iph_2025_20/n2/n2_l3/#/)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 3 - Clases
-
-- [Más sobre strings](https://eerosales24.github.io/iph_2025_20/n3/n3_01_mas_sobre_strings/#/)
-- [`while`](https://eerosales24.github.io/iph_2025_20/n3/n3_02_instrucciones_iterativas_while/#/)
-- [`for`](https://eerosales24.github.io/iph_2025_20/n3/n3_03_instrucciones_iterativas_for/#/)
-- [Listas I](https://eerosales24.github.io/iph_2025_20/n3/n3_04_listas_1/#/)
-- [Listas II](https://eerosales24.github.io/iph_2025_20/n3/n3_05_listas_2/#/)
-- [Listas III](https://eerosales24.github.io/iph_2025_20/n3/n3_06_listas_3/#/)
-- [Manejo de archivos](https://eerosales24.github.io/iph_2025_20/n3/n3_07_manejo_de_archivos)
-- [Estructuras compuestas](https://eerosales24.github.io/iph_2025_20/n3/n3_08_estructuras_de_datos_compuestas)
-- [Patrón de recorrido total](https://eerosales24.github.io/iph_2025_20/n3/n3_09_patron_de_recorrido_total_en_secuencias/#/)
-- [Patrón de recorrido parcial](https://eerosales24.github.io/iph_2025_20/n3/n3_10_patron_de_recorrido_parcial_en_secuencias/#/)
-- [Patrones de recorrido en diccionarios](https://eerosales24.github.io/iph_2025_20/n3/n3_11_patrones_de_recorrido_en_diccionarios)
-
-
-<br>
-
-- En construcción...
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 3 - Laboratorios
-
-- [N3-L1](https://eerosales24.github.io/iph_2025_20/n3/n3_l1/#/)
-
-
-- [**N3-L2**](https://eerosales24.github.io/iph_2025_20/n3/n3_l2/#/)
-
-<br>
-
-- En construcción...
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 4 - Clases
-
-- En construcción...
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Nivel 4 - Laboratorios
-
-- En construcción...
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-<style> table { width: 50%; border-collapse: collapse; } td { padding: 12px; text-align: justify; font-size: 10px; border: 0.5px solid black; } </style> <table> <tr> <td> <strong>Copyright © 2025 Universidad de los Andes</strong>. Esta obra se encuentra sujeta a una licencia Creative Commons <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">"Attribution-NonCommercial-NoDerivatives 4.0 International"</a>. <strong>Atribución-NoComercial-SinDerivadas:</strong> Esta licencia es la más restrictiva de las seis licencias principales, sólo permite que otros puedan descargar las obras y compartirlas con otras personas, siempre que se reconozca su autoría, pero no se pueden cambiar de ninguna manera ni se pueden utilizar comercialmente. Puede ser reproducida para cualquier uso no-comercial, otorgando crédito a la Universidad de los Andes. No se permiten obras derivadas. El uso del nombre de la Universidad de los Andes para cualquier fin distinto al reconocimiento respectivo y el uso de su logotipo, no están autorizados por esta licencia. <strong>Universidad de los Andes | Vigilada Mineducación</strong> Reconocimiento como Universidad, Decreto 1297 del 30 de mayo de 1964. Reconocimiento personería jurídica Resolución 28 del 23 de febrero de 1949 Min. Justicia. Fuente de iconos: <a href=https://www.flaticon.com>"www.flaticon.com"</a>. <strong>Licencia Flaticon</strong>: Gratis para uso personal o comercial con atribución, como se hace aquí de forma explícita y pública. </td> </tr> </table>
+ [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_10/#)
 </div></script></section></div>
     </div>
 
