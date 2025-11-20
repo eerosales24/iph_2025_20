@@ -99,20 +99,6 @@ Universidad de los Andes
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Instrucciones generales
-
-- **Objetivos**
-	- Practicar la algoritmia de matrices
-
-<br>
-
-- **¿Preguntas?**
-	- Formule su pregunta de forma **muy clara y concisa**
-		- Luego (**y solo luego de esto**)
-			- Levante la mano
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
 ###  Actividad I
 
 - **Objetivo:**
@@ -585,6 +571,42 @@ def imprimir_x_con_forma(n: int) -> None:
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+### Pintando un cuadro de unos
+
+
+```python
+def borde_exterior_con_unos(matriz: list) -> None:
+    """
+    Cambia los elementos en el borde exterior de la matriz para que sean unos.
+    """
+    for columna in range(len(matriz[0])): 
+        matriz[0][columna] = 1 
+        matriz[len(matriz) - 1][columna] = 1 
+
+    for fila in range(1, len(matriz) - 1): 
+        matriz[fila][0] = 1 
+        matriz[fila][len(matriz[0]) - 1] = 1
+        
+    return matriz
+
+
+# Ejemplo de matriz cualquiera (el contenido no importa, solo el tamaño).
+matriz = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+]
+
+# Llamada a la función para probarla e impresión como matriz
+resultado = borde_exterior_con_unos(matriz)
+
+for fila in resultado:
+    print(fila)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 ###  Actividad III (2/4)
 
 - En `logica.py`
@@ -649,19 +671,27 @@ def imprimir_borde_exterior(matriz: list) -> None:
 
         # Fila superior
         for col in range(columnas):
+            # Esta parte siempre existe porque la matriz tiene al menos 2x2.
+            # Se recorre de izquierda a derecha.
             elementos.append(matriz[0][col])
 
         # Última columna
         for fila in range(1, filas):
+            # Empieza desde la 2da fila para no repetir la esquina superior derecha.
             elementos.append(matriz[fila][columnas - 1])
 
         # Fila inferior (de derecha a izquierda)
-        if filas > 1:
+        if filas > 1: # Solo si existe una fila inferior distinta de la superior.
+            # Se inicia desde la columna inmediatamente anterior a la última,
+            # para no repetir la esquina inferior derecha.
             for col in range(columnas - 2, -1, -1):
                 elementos.append(matriz[filas - 1][col])
 
         # Primera columna (de abajo hacia arriba)
         if columnas > 1:
+            # Empieza desde la fila inmediatamente anterior a la inferior,
+            # para evitar repetir la esquina inferior izquierda.
+            # Termina antes de la fila 0 para no repetir la esquina superior izquierda.
             for fila in range(filas - 2, 0, -1):
                 elementos.append(matriz[fila][0])
 
@@ -697,6 +727,45 @@ def imprimir_borde_exterior(matriz: list) -> None:
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
+### Pintando una letra E
+
+```python
+def funcion_e(matriz: list) -> None:
+    filas = len(matriz)
+    columnas = len(matriz[0])
+    mitad = filas // 2
+
+    for i in range(filas):
+        fila_impresa = ""
+
+        for j in range(columnas):
+            # Fila superior, fila media o fila inferior → imprimir 1
+            if i == 0 or i == mitad or i == filas - 1:
+                fila_impresa += "1"
+            # Primera columna → imprimir 1
+            elif j == 0:
+                fila_impresa += "1"
+            else:
+                # Parte interior (vacía)
+                fila_impresa += " "
+
+        print(fila_impresa)
+
+# Ejemplo de matriz cualquiera (solo importa su tamaño)
+matriz = [
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""]
+]
+
+# Llamada a la función para imprimir la E
+funcion_e(matriz)
+```
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
 ###  Actividad III (4/4)
 
 1. Revise si sus funciones cumplen con [todas las buenas prácticas obligatorias del curso](https://eerosales24.github.io/iph_2025_10/general/buenas_practicas/)
@@ -707,37 +776,9 @@ def imprimir_borde_exterior(matriz: list) -> None:
 </div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
 <div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
 
-### Entrega (1/2)
-
-1. Comprima en un archivo `.zip` el archivo:
-	- `logica.py`
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-### Entrega (2/2)
-
-2. Haga el envío del `.zip` en  [Bloque Neón](https://bloqueneon.uniandes.edu.co/)
-	- Vaya a **"Actividades"**
-		- **"N4-L1"**
-
 <br>
 
-
-- Nota: Si no recuerda el proceso, consúltelo aquí:
-	- [N1-L2 - Envío de un entregable a Bloque Neón](https://eerosales24.github.io/iph_2025_10/n1/n1_l2/#/42)
-</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="has-light-background drop" data-background-color="#f8f8f8" -->
-<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
-
-# Fin de N4-L1
-
-- Si no alcanzó a terminar el laboratorio
-	- Debe completar el laboratorio en su tiempo de 
-		- **Trabajo individual semanal** de IP Honores
-
-
-<br>
-
- [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_10/#)
+ [<i class="fas fa-home  fa-3x"></i>](https://eerosales24.github.io/iph_2025_20/#)
 </div></script></section></div>
     </div>
 
